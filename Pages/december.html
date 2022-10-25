@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar for December, 2022</title>
+
+    <!--CSS Links-->
+    <link rel="stylesheet" href="../CSS/calDec.css" />
+
+    <!-- JS -->
+    <script src="../JS/dec.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <!--logo-->
+      <div class="logo">Demo For Creating Calendars</div>
+      <!-- Later, this will be a picture of Mia? 
+      ALSO!!! Don't forget to to add icons to the top of the webpage (i.e. vlr at the top of chrome)
+      We did this early on - should be in index.html-->
+
+      <!--navigation menu-->
+      <div class="navlinks">
+        <!--(ONLY FOR MOBILE) mobile checkbox hack-->
+        <!-- <<input type="checkbox" id="checkbox_toggle" />
+        <label for="checkbox_toggle" class="hamburger">&#9776;</label> -->
+
+        <!-- this I WILL need, but for now it's being a fucking pain in the ass. the arrow is annoying as FUCK
+and it gets in the way of having my Create Reminder dropdown work (can't figure out how to extend)
+the space for hover; and can't move it higher bc arrow is in the way. BS man -->
+
+        <!--Navigation Links-->
+        <div class="menu">
+          <li>
+            <div class="create_btn"><button>Create Reminder</button></div>
+          </li>
+          <li class="delete">
+            <a href="#">Delete Reminder</a>
+            <!-- Drop-down menu here -->
+            <ul class="dropdown">
+              <!-- <li><a href="#">Today</a></li> -->
+              <li>
+                <div class="delone_btn"><button>One</button></div>
+              </li>
+              <li>
+                <div class="delmult_btn"><button>Multiple</button></div>
+              </li>
+            </ul>
+          </li>
+        </div>
+      </div>
+    </nav>
+    <!-- <header>
+      <h1>A demo for creating Calenders</h1>
+    </header> -->
+    <nav>
+      <menu>
+        <ul>
+          <li><a href="../index.html">Index</a></li>
+        </ul>
+      </menu>
+    </nav>
+
+    <div class="calendar_container">
+      <table id="calendar_table">
+        <caption>
+          Month: December, 2022
+        </caption>
+        <thead>
+          <tr>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td class="firstofMonth">
+              01<br />
+              <span id="01day"></span>
+            </td>
+            <td class="snd">
+              02<br />
+              <span id="02day"></span>
+            </td>
+            <td class="trd">
+              03<br />
+              <!-- <pre></pre> -->
+              <span class="test" id="03day"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              04<br />
+              <span id="04day"></span>
+            </td>
+            <td>
+              05<br />
+              <span id="05day"></span>
+            </td>
+            <td>
+              06<br />
+              <span id="06day"></span>
+            </td>
+            <td>
+              07<br />
+              <span id="07day"></span>
+            </td>
+            <td>
+              08<br />
+              <span id="08day"></span>
+            </td>
+            <td>
+              09<br />
+              <span id="09day"></span>
+            </td>
+            <td>
+              10<br />
+              <span id="10day"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              11<br />
+              <span id="11day"></span>
+            </td>
+            <td>
+              12<br />
+              <span id="12day"></span>
+            </td>
+            <td>
+              13<br />
+              <span id="13day"></span>
+            </td>
+            <td>
+              14<br />
+              <span id="14day"></span>
+            </td>
+            <td>
+              15<br />
+              <span id="15day"></span>
+            </td>
+            <td>
+              16<br />
+              <span id="16day"></span>
+            </td>
+            <td>17 <span id="17day"></span></td>
+          </tr>
+          <tr>
+            <td>18<br /><span id="18day"></span></td>
+            <td>19<br /><span id="19day"></span></td>
+            <td>20<br /><span id="20day"></span></td>
+            <td>21<br /><span id="21day"></span></td>
+            <td>22<br /><span id="22day"></span></td>
+            <td>23<br /><span id="23day"></span></td>
+            <td>24<br /><span id="24day"></span></td>
+          </tr>
+
+          <tr>
+            <td>25<br /><span id="25day"></span></td>
+            <td>26<br /><span id="26day"></span></td>
+            <td>27<br /><span id="27day"></span></td>
+            <td>28<br /><span id="28day"></span></td>
+            <td>29<br /><span id="29day"></span></td>
+            <td>30<br /><span id="30day"></span></td>
+            <td>31<br /><span id="31day"></span></td>
+          </tr>
+
+          <tr>
+            <td>01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>04</td>
+            <td>05</td>
+            <td>06</td>
+            <td>07</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
