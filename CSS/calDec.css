@@ -1,7 +1,5 @@
 /* style sheet for html file in ../html/december.html */
 
-/*so I'm pretty sure style_navbar is useless, since we copied that code here, right?*/
-
 /*Apply basic CSS to the webpage */
 * {
   /*For everything in the page: remove all margin and paddings, add a box*/
@@ -280,14 +278,13 @@ to make sure it's visible which days are a part of the current month you're look
   visibility: hidden;
 }
 /* use psuedo classes on the td elements and span element to show event when dates are clicked with a * mark */
-/* display events either on click or hover. YOu should also add for focus */
+/* display events either on click or hover. You should also add for focus */
 #calendar_table td:active > span {
   visibility: visible;
 }
 #calendar_table td:hover > span {
   visibility: visible;
 }
-/* try yourself - make the fonts on the dates that don't belong to october lighter - just as actual calenders do */
 
 /*Button code*/
 .create,
@@ -340,4 +337,4 @@ to make sure it's visible which days are a part of the current month you're look
   instead makes it so that the new line doesn't even work
 }*/
 /* in theory, this SHOULD work, but since it starts empty, it doesn't. Things get added to it, so displaying as a 
-block ain't gucci */
+block doesn't work afaik */
