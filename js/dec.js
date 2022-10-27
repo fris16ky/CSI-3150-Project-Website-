@@ -34,16 +34,58 @@ const create_btn = document.querySelector(".create_btn button");
 const delone_btn = document.querySelector(".delone_btn button");
 const delmult_btn = document.querySelector(".delmult_btn button");
 
+//getting the date and month in order to put accurate reminders on the calendar
+const currentDay = new Date();
+const currentMonth = new Date();
+currentDay.getDate; //integer - 1-31.
+currentMonth.getMonth; //integer - 0 for Jan, 11 for Dec
+
 create_btn.addEventListener("click", (e) => {
+  //so for the new input way, we'll need two prompts. Month and Day. When the month is entered, we'll have to check
+  //if userMonth == "January" or "january".
+  //Googling said that this should be better: a.localeCompare(b, undefined, { sensitivity: 'accent' }) === 0
+  //where a is the input string, b is what we want to compare. So, we can put "January" for b
+  //either run a for loop thru the months we don't want, and compare array[index] each time
+  const monthArray = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+  ];
+  for (let i = 0; i < 9; i++) {
+    //0 thru 8 since there are 9 months we don't want (Jan to sept)
+    if (
+      //rn, userInput is a default. Haven't started the new code. Hopefully it'll be simple
+      userInput.localeCompare(monthArray[i], undefined, {
+        sensitivity: "base",
+      }) === 0
+    ) {
+      //^^This compares the user inputted month to every month we don't carry, while ignoring case and accents (january and January
+      //and Jánuary are the same)
+      //the user is trying to put a reminder for a month we do not allow
+      windows.prompt(
+        "Please enter a different month! We currently only support months until the end of the year, sorry!"
+      );
+    }
+  }
+
   let reminder = prompt("Please enter your reminder", "Enter Here");
-  let time = prompt(
-    "What time would you like your reminder?",
-    "Format: 00:00 -- Military Time!"
-    //will be getting rid of the time aspect; obselete
-  );
+  //we want this to be an input box instead of a Windows Prompt. We did this once before I believe. For email and user
+  //But the prof sent us a link or two to help with this.
+
+  // let time = prompt(
+  //   "What time would you like your reminder?",
+  //   "Format: 00:00 -- Military Time!"
+  //   //will be getting rid of the time aspect; obselete
+  // );
   let text;
-  let counter = 0;
-  if (reminder == null || reminder == "" || time == null || time == "") {
+  // let counter = 0; counter code was from trying to figure out multiple reminders in one day
+  if (reminder == null || reminder == "") {
     text = "User cancelled the prompt :(";
   } else {
     if (parseInt(time.substring(0, 2)) <= 11) {
@@ -54,7 +96,6 @@ create_btn.addEventListener("click", (e) => {
         "' at " +
         time.substring(0, 5) +
         "am today";
-      counter++;
     } else {
       //reminder is in the afternoon
       text =
@@ -63,14 +104,9 @@ create_btn.addEventListener("click", (e) => {
         "' at " +
         time.substring(0, 5) +
         "pm today";
-      counter++;
     }
 
-    if (counter == 0) {
-      day3.textContent += reminder;
-    } else {
-      day3.textContent += "\n" + reminder;
-    }
+    day3.textContent += "\n" + reminder;
   }
   window.confirm(text);
 });
