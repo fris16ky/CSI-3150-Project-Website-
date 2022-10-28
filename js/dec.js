@@ -36,6 +36,7 @@ const create_btn = document.querySelector(".create_btn button");
 const delone_btn = document.querySelector(".delone_btn button");
 const delmult_btn = document.querySelector(".delmult_btn button");
 const done_btn = document.querySelector(".done_btn button");
+const submit_btn = document.querySelector(".submit_btn button");
 
 const monthArray = [
   "January",
@@ -150,27 +151,453 @@ done_btn.addEventListener("click", (e) => {
   //input from month box:
   var reminderDate = document.getElementById("inputDate").value;
   let subMonth = reminderDate.substring(5, 7);
-  let subDay = reminderDate.substring(8, 10);
+  let subDay = reminderDate.substring(8, 10); //1 to 31. Don't think I need to worry about it getting past the allowed
+  //day (i.e. 31 for November)
   //subMonth is now the month in number form (10 = oct, 11 = nov, 12 = dec)
   //input from the input box:
   var reminderContent = document.getElementById("inputRem").value;
   console.log(reminderDate);
   console.log(reminderContent);
   window.confirm("Your reminder has been created!");
-
-  document.body.onload = addElement;
-  //now we need to dynamically add spans based on what day they selected.
-  function addElement() {
-    const newSpan = document.createElement("span");
-    //give it content
-    const newContent = document.createTextNode(reminderContent);
-    //add to newly created span
-    newSpan.appendChild(newContent);
-    //add newly created element & its content into the DOM
-    const currentSpan = document.getElementById("01day");
-    newSpan.after(currentSpan);
-    console.log(newSpan.outerHTML);
+  //problem rn: the reminderContent is working, same with the date and its substrings
+  //what it's not doing is displaying content to the calendar.
+  //day1.textContent += reminderContent + " "; //this works easily, but we want new line!
+  if (subDay == 1) {
+    day1.textContent += reminderContent + ". ";
+  } else if (subDay == 2) {
+    day2.textContent += reminderContent + ". ";
+  } else if (subDay == 3) {
+    day3.textContent += reminderContent + ". ";
+  } else if (subDay == 4) {
+    day4.textContent += reminderContent + ". ";
+  } else if (subDay == 5) {
+    day5.textContent += reminderContent + ". ";
+  } else if (subDay == 6) {
+    day6.textContent += reminderContent + ". ";
+  } else if (subDay == 7) {
+    day7.textContent += reminderContent + ". ";
+  } else if (subDay == 8) {
+    day8.textContent += reminderContent + ". ";
+  } else if (subDay == 9) {
+    day9.textContent += reminderContent + ". ";
+  } else if (subDay == 10) {
+    day10.textContent += reminderContent + ". ";
+  } else if (subDay == 11) {
+    day11.textContent += reminderContent + ". ";
+  } else if (subDay == 12) {
+    day12.textContent += reminderContent + ". ";
+  } else if (subDay == 13) {
+    day13.textContent += reminderContent + ". ";
+  } else if (subDay == 14) {
+    day14.textContent += reminderContent + ". ";
+  } else if (subDay == 15) {
+    day15.textContent += reminderContent + ". ";
+  } else if (subDay == 16) {
+    day16.textContent += reminderContent + ". ";
+  } else if (subDay == 17) {
+    day17.textContent += reminderContent + ". ";
+  } else if (subDay == 18) {
+    day18.textContent += reminderContent + ". ";
+  } else if (subDay == 19) {
+    day19.textContent += reminderContent + ". ";
+  } else if (subDay == 20) {
+    day20.textContent += reminderContent + ". ";
+  } else if (subDay == 21) {
+    day21.textContent += reminderContent + ". ";
+  } else if (subDay == 22) {
+    day22.textContent += reminderContent + ". ";
+  } else if (subDay == 23) {
+    day23.textContent += reminderContent + ". ";
+  } else if (subDay == 24) {
+    day24.textContent += reminderContent + ". ";
+  } else if (subDay == 25) {
+    day25.textContent += reminderContent + ". ";
+  } else if (subDay == 26) {
+    day26.textContent += reminderContent + ". ";
+  } else if (subDay == 27) {
+    day27.textContent += reminderContent + ". ";
+  } else if (subDay == 28) {
+    day28.textContent += reminderContent + ". ";
+  } else if (subDay == 29) {
+    day29.textContent += reminderContent + ". ";
+  } else if (subDay == 30) {
+    day30.textContent += reminderContent + ". ";
+  } else if (subDay == 31) {
+    day31.textContent += reminderContent + ". ";
+  } else {
+    window.confirm("There has been an error. Please retry");
   }
 
+  //now we need to dynamically add spans based on what day they selected.
+  // function addElement() {
+  //   var newSpan = document.createElement("span");
+  //   //give it content
+  //   //const newContent = document.createTextNode(reminderContent);
+  //   //add to newly created span
+  //   //newSpan.appendChild(newContent);
+  //   newSpan.innerHTML = reminderContent;
+  //   //add newly created element & its content into the DOM
+  //   var currentSpan = document.getElementById("01day");
+  //   currentSpan.appendChild(newSpan);
+  //   //currentSpan.after(newSpan);
+  //   //document.body.insertBefore(newSpan, currentSpan);
+  // }
+  //this is a shit show. None of this code works, despite BEING FROM THE PROFESSORS INTERNET HELP
+
+  //document.body.onload = addElement;
   document.getElementById("userInputRem").className = "hide";
+});
+
+delone_btn.addEventListener("click", (e) => {
+  //delete code time! unsure how to do this as of now. Might not be able to delete only one.
+  //maybe deal with reminderContent's length? And delete things that long? or simply
+  //repaste with a substring up until the end length - the most recent reminder length?
+  //either way, do this one last, if at all.
+});
+
+delmult_btn.addEventListener("click", (e) => {
+  //add code for an input date; same as before.
+  //They'll select the date for the nuke, then that day.textContent = "";
+  //might need to do another 31 if loops to determine which day it'll be.
+  document.getElementById("userInputDelete").className = "show";
+  if (document.getElementById("userInputRem").className == "show") {
+    window.confirm(
+      "Please select either Create a Reminder OR Delete a Reminder!"
+    );
+    document.getElementById("userInputRem").className = "hide";
+    document.getElementById("userInputDelete").className = "hide";
+  }
+});
+
+submit_btn.addEventListener("click", (e) => {
+  //this is code for when the user picks out which day they want to remove all reminders
+  //input from month box:
+  var delAll = document.getElementById("deleteDate").value;
+  let subMonth = delAll.substring(5, 7);
+  let subDay = delAll.substring(8, 10); //1 to 31. Don't think I need to worry about it getting past the allowed
+  //day (i.e. 31 for November)
+  //subMonth is now the month in number form (10 = oct, 11 = nov, 12 = dec)
+  //input from the input box:
+  console.log(delAll);
+  //problem rn: the reminderContent is working, same with the date and its substrings
+  //what it's not doing is displaying content to the calendar.
+  //day1.textContent += reminderContent + " "; //this works easily, but we want new line!
+  if (subDay == 1) {
+    if (day1.textContent == "") {
+      //if the date currently does not have any reminders to remove, do not proceed
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      //the date DOES have reminders to remove; remove them.
+      //We also want to display to the user that we have removed the reminders
+      day1.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 2) {
+    if (day2.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+    } else {
+      day2.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 3) {
+    if (day3.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day3.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 4) {
+    if (day4.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day4.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 5) {
+    if (day5.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day5.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 6) {
+    if (day6.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day6.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 7) {
+    if (day7.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day7.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 8) {
+    if (day8.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day8.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 9) {
+    if (day9.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day9.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 10) {
+    if (day10.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day10.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 11) {
+    if (day11.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day11.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 12) {
+    if (day12.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day12.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 13) {
+    if (day13.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day13.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 14) {
+    if (day14.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day14.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 15) {
+    if (day15.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day15.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 16) {
+    if (day16.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day16.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 17) {
+    if (day17.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day17.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 18) {
+    if (day18.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day18.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 19) {
+    if (day19.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day19.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 20) {
+    if (day20.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day20.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 21) {
+    if (day21.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day21.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 22) {
+    if (day22.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day22.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 23) {
+    if (day23.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day23.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 24) {
+    if (day24.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day24.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 25) {
+    if (day25.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day25.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 26) {
+    if (day26.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day26.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 27) {
+    if (day27.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day27.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 28) {
+    if (day28.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day28.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 29) {
+    if (day29.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day29.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 30) {
+    if (day30.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day30.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else if (subDay == 31) {
+    if (day31.textContent == "") {
+      window.confirm("This day does not have a reminder!");
+      stop;
+    } else {
+      day31.textContent = "";
+      window.confirm(
+        "All reminders have been removed on " + subMonth + "/" + subDay
+      );
+    }
+  } else {
+    window.prompt("There has been an error. Please retry");
+  }
+
+  //hide delete prompt after it's been used
+  document.getElementById("userInputDelete").className = "hide";
 });

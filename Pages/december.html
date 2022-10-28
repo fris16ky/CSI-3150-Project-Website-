@@ -11,6 +11,9 @@
 
     <!-- JS -->
     <script src="../js/dec.js" defer></script>
+
+    <!-- This is for the favicon (at the top of webpage) -->
+    <link rel="icon" href="../Media/Images/miaLogo.png" type="image" />
   </head>
   <body>
     <nav class="navbar">
@@ -50,7 +53,70 @@
         </ul>
       </menu>
     </nav>
+    <!-- do something with the navigation -->
 
+    <div id="userInputRem" class="hide">
+      <label for="reminderDate"
+        >What month and day would you like to set a reminder?</label
+      >
+      <br />
+      <input
+        type="date"
+        id="inputDate"
+        value="2022-12-01"
+        min="2022-10-01"
+        max="2022-12-31"
+        required
+      />
+      <!-- We want the default value here to be 2022-12-01 since this webpage is for the December Calendar -->
+
+      <br />
+      <label for="reminderContent"
+        >What would you like your reminder to say?</label
+      >
+      <br />
+      <input
+        type="text"
+        id="inputRem"
+        minlength="1"
+        maxlength="50"
+        size="38"
+        placeholder="Type here - max of 50 characters."
+        required
+      />
+      <!-- size = how long the input box is -->
+
+      <!-- Done button for when the user submits their reminder -->
+      <!-- We'll want an empty-checker along with the action of putting the text on the calendar -->
+      <div class="done_btn"><button>Done</button></div>
+    </div>
+
+    <div id="userInputDelete" class="hide">
+      <label for="deleteDate"
+        >What month and day would you like to delete all reminders?</label
+      >
+      <br />
+      <input
+        type="date"
+        id="deleteDate"
+        value="2022-12-01"
+        min="2022-10-01"
+        max="2022-12-31"
+        required
+      />
+      <div class="submit_btn">
+        <button>Submit</button>
+      </div>
+    </div>
+
+    <!-- <script>
+      document
+        .getElementById("done_btn")
+        .addEventListener("click", function () {
+          document.getElementById("01day").innerHTML +=
+            "<span>Hello geeks<span>";
+        });
+    </script> tried to use geeksforgeeks code. that didn't even work-->
     <div class="calendar_container">
       <table id="calendar_table">
         <caption>
@@ -78,14 +144,14 @@
               01<br />
               <span id="01day"></span>
             </td>
+
             <td class="snd">
               02<br />
               <span id="02day"></span>
             </td>
             <td class="trd">
               03<br />
-              <!-- <pre></pre> -->
-              <span class="test" id="03day"></span>
+              <span id="03day"></span>
             </td>
           </tr>
 
@@ -154,17 +220,17 @@
             <td>21<br /><span id="21day"></span></td>
             <td>22<br /><span id="22day"></span></td>
             <td>23<br /><span id="23day"></span></td>
-            <td>24<br /><span id="24day"></span></td>
+            <td>24<br /><span id="chrimmyEve"></span></td>
           </tr>
 
           <tr>
-            <td>25<br /><span id="25day"></span></td>
+            <td>25<br /><span id="christmas"></span></td>
             <td>26<br /><span id="26day"></span></td>
             <td>27<br /><span id="27day"></span></td>
             <td>28<br /><span id="28day"></span></td>
             <td>29<br /><span id="29day"></span></td>
             <td>30<br /><span id="30day"></span></td>
-            <td>31<br /><span id="31day"></span></td>
+            <td>31<br /><span id="nyEve"></span></td>
           </tr>
 
           <tr>

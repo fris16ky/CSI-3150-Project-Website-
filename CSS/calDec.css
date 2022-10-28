@@ -338,3 +338,15 @@ to make sure it's visible which days are a part of the current month you're look
 }*/
 /* in theory, this SHOULD work, but since it starts empty, it doesn't. Things get added to it, so displaying as a 
 block doesn't work afaik */
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+#christmas {
+  /* later */
+}
