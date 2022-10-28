@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar for December, 2022</title>
 
+    <!-- Font Awesome credit -->
+    <script
+      src="https://kit.fontawesome.com/c976334f11.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!--CSS Links-->
     <link rel="stylesheet" href="../CSS/calDec.css" />
 
@@ -54,6 +60,13 @@
       </menu>
     </nav>
     <!-- do something with the navigation -->
+
+    <nav class="changeMonth">
+      <a href="./november.html">
+        <i class="fa-solid fa-arrow-left"></i>
+        Previous Month
+      </a>
+    </nav>
 
     <div id="userInputRem" class="hide">
       <label for="reminderDate"
@@ -224,14 +237,17 @@
           </tr>
 
           <tr>
-            <td>25<br /><span id="christmas"></span></td>
+            <td class="chrimmy">25<br /><span id="christmas"></span></td>
             <td>26<br /><span id="26day"></span></td>
             <td>27<br /><span id="27day"></span></td>
             <td>28<br /><span id="28day"></span></td>
             <td>29<br /><span id="29day"></span></td>
             <td>30<br /><span id="30day"></span></td>
-            <td>31<br /><span id="nyEve"></span></td>
+            <td class="defaultny" id="nye">31<br /><span id="nyEve"></span></td>
           </tr>
+
+          <!-- maybe get the code for this out. def for November; don't need a full week and a half of future dates that are
+unaccessible -->
 
           <tr>
             <td>01</td>

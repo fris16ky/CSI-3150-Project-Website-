@@ -212,6 +212,7 @@ done_btn.addEventListener("click", (e) => {
     day24.textContent += reminderContent + ". ";
   } else if (subDay == 25) {
     day25.textContent += reminderContent + ". ";
+    day25.style.color = "red";
   } else if (subDay == 26) {
     day26.textContent += reminderContent + ". ";
   } else if (subDay == 27) {
@@ -224,6 +225,8 @@ done_btn.addEventListener("click", (e) => {
     day30.textContent += reminderContent + ". ";
   } else if (subDay == 31) {
     day31.textContent += reminderContent + ". ";
+    document.getElementById("nye").className = "goldboi";
+    day31.style.color = "gold";
   } else {
     window.confirm("There has been an error. Please retry");
   }
@@ -278,6 +281,15 @@ submit_btn.addEventListener("click", (e) => {
   //day (i.e. 31 for November)
   //subMonth is now the month in number form (10 = oct, 11 = nov, 12 = dec)
   //input from the input box:
+
+  // if (subMonth == 10) {
+  //   window.location.href = "./october.html";
+  // }
+  //^^ This works! Now, need to figure out some things. Do we let users create and delete reminders of other months
+  //from this page? Probably shouldn't, right?
+  //so maybe add the navigation arrows. Previous Month, Next Month (null for December). And change the scope of the dates
+  //to only the current month.
+
   console.log(delAll);
   //problem rn: the reminderContent is working, same with the date and its substrings
   //what it's not doing is displaying content to the calendar.

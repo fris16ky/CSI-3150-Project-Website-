@@ -206,12 +206,12 @@ tbody tr:nth-child(n) {
 }
 
 tbody tr:nth-child(1) {
-  /*This is for rows. */
+  /*First row (of previous month dates) is greyed out */
   background-color: lightgray;
 }
 
 tbody tr:nth-child(6) {
-  /*This is for rows. */
+  /*Last row (of future month dates) is greyed out */
   background-color: lightgray;
 }
 
@@ -347,6 +347,25 @@ block doesn't work afaik */
   display: block;
 }
 
-#christmas {
-  /* later */
+.chrimmy {
+  color: white;
+  /* background-image: url(http://atlas-content-cdn.pixelsquid.com/stock-images/christmas-present-gift-box-B5mnXX5-600.jpg);
+  background-size: cover; */
+  background-color: green;
+}
+
+.changeMonth {
+  text-align: right;
+  margin-right: 343px;
+}
+
+.defaultny {
+  background-color: white;
+}
+
+.goldboi {
+  /* background-color: black; */
+  color: gold;
+  background-image: url("https://www.ci.crowley.tx.us/sites/default/files/styles/full_node_primary_extra_wide/public/imageattachments/fire/page/9281/fireworks-istock.jpg?itok=VvNPfv1X");
+  background-size: cover;
 }
