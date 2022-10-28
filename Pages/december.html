@@ -77,11 +77,13 @@
         type="date"
         id="inputDate"
         value="2022-12-01"
-        min="2022-10-01"
+        min="2022-12-01"
         max="2022-12-31"
         required
       />
-      <!-- We want the default value here to be 2022-12-01 since this webpage is for the December Calendar -->
+      <!-- We want the default value here to be 2022-12-01 since this webpage is for the December Calendar 
+      We're also no longer allowing the user to set reminders for other months while accessing a different month
+      than they want to set a reminder to-->
 
       <br />
       <label for="reminderContent"
@@ -103,8 +105,22 @@
       <!-- We'll want an empty-checker along with the action of putting the text on the calendar -->
       <div class="done_btn"><button>Done</button></div>
     </div>
-
-    <div id="userInputDelete" class="hide">
+    <div id="userInputDeleteOne" class="hide">
+      <label for="deleteOneDate"
+        >What day would you like to delete your most recent reminder?</label
+      >
+      <br />
+      <input
+        type="date"
+        id="deleteOneDate"
+        value="2022-12-01"
+        min="2022-12-01"
+        max="2022-12-31"
+        required
+      />
+      <div class="submitOne_btn"><button>Submit</button></div>
+    </div>
+    <div id="userInputDeleteAll" class="hide">
       <label for="deleteDate"
         >What month and day would you like to delete all reminders?</label
       >
@@ -113,10 +129,12 @@
         type="date"
         id="deleteDate"
         value="2022-12-01"
-        min="2022-10-01"
+        min="2022-12-01"
         max="2022-12-31"
         required
       />
+      <!-- Only letting them manage reminders in the current month, they can use the navigation tags to 
+      maneuver to the other available months -->
       <div class="submit_btn">
         <button>Submit</button>
       </div>
@@ -260,6 +278,7 @@ unaccessible -->
           </tr>
         </tbody>
       </table>
+      <!-- End of calendar table -->
     </div>
   </body>
 </html>

@@ -10,6 +10,8 @@
 
 body {
   font-family: cursive;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 a {
@@ -175,7 +177,7 @@ h1 {
   position: relative;
   /* position offset top and left */
   top: 75%;
-  left: 25%;
+  left: 20%;
   /* box model properties */
   border: 20px;
   margin: auto;
@@ -192,7 +194,8 @@ h1 {
   /* making table borders */
   border: 2px solid black;
   /* table width */
-  width: 50%;
+  width: 55%;
+  height: 80%;
 }
 
 #calendar_table thead {
@@ -262,7 +265,7 @@ to make sure it's visible which days are a part of the current month you're look
 /* format table cells space alignment etc */
 #calendar_table td {
   width: 100px;
-  height: 100px;
+  height: 110px;
   vertical-align: top;
 }
 /* outline any holidays or special event on the calendar. create a class and assign to specific td */
