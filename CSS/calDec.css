@@ -43,6 +43,8 @@ canvas where you can draw certain things */
 .logo {
   font-size: 32px; /*Only works for this bc we're using text as our logo */
 }
+/* Change the font color too. Need to get nav working on other side (whether I want to do previous months, 
+going to about me and home page */
 
 .logo img {
   height: 40px;
