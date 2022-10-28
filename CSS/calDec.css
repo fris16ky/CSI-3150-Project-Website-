@@ -44,6 +44,10 @@ canvas where you can draw certain things */
   font-size: 32px; /*Only works for this bc we're using text as our logo */
 }
 
+.logo img {
+  height: 40px;
+}
+
 /*Navbar menu */
 .menu {
   display: flex;
