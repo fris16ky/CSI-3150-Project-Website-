@@ -56,7 +56,44 @@ going to about me and home page */
   padding: 0;
   text-decoration: none;
 }
-.navPages > a {
+/* .navPages > ul:hover {
+  display: block;
+} */
+.navPages:hover .dropdown {
+  display: block;
+  color: black;
+  background-color: yellow;
+}
+
+.dropdown2 {
+  background-color: dodgerblue;
+  padding: 0.5em 0;
+  right: 0px;
+  position: absolute;
+  display: none;
+  border-radius: 8px;
+  top: 15px;
+}
+
+/*Now we need to code the hover. Took vid on why he did li + li - means we're choosing siblings (both children of services)*/
+.dropdown2 li + li {
+  margin-top: 0px;
+}
+
+.dropdown2 li {
+  padding: 0.5em 1em;
+  width: 7.5em;
+  text-align: center;
+}
+.dropdown2 li + li:hover {
+  background-color: silver;
+}
+
+.navPages:hover .dropdown2 {
+  display: block;
+}
+
+/* .navPages > a {
   text-align: center;
   display: inline-block;
 }
@@ -74,7 +111,7 @@ going to about me and home page */
 .navPages :hover {
   display: block;
   text-align: center;
-}
+} */
 
 /* .dropdownPages {
   background-color: dodgerblue;
@@ -170,6 +207,38 @@ going to about me and home page */
 
 .delete:hover .dropdown {
   display: block;
+}
+.delone_btn button {
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+}
+
+.delone_btn button:hover {
+  background-color: yellow;
+  color: black;
+}
+
+.delmult_btn button {
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+}
+
+.delmult_btn :hover {
+  background-color: yellow;
+  color: black;
+}
+
+.create_btn button {
+  background-color: dodgerblue;
+  border: transparent;
+  color: white;
+  font-size: 11px;
+}
+
+.create_btn :hover {
+  background-color: silver;
 }
 
 /*Responsive nav bar*/
@@ -366,39 +435,6 @@ to make sure it's visible which days are a part of the current month you're look
 .delmult_btn {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   /* this is a neat effect */
-}
-
-.delone_btn button {
-  background-color: dodgerblue;
-  color: white;
-  border: none;
-}
-
-.delone_btn button:hover {
-  background-color: yellow;
-  color: black;
-}
-
-.delmult_btn button {
-  background-color: dodgerblue;
-  color: white;
-  border: none;
-}
-
-.delmult_btn :hover {
-  background-color: yellow;
-  color: black;
-}
-
-.create_btn button {
-  background-color: dodgerblue;
-  border: transparent;
-  color: white;
-  font-size: 11px;
-}
-
-.create_btn :hover {
-  background-color: silver;
 }
 
 /* #03day.preline {
