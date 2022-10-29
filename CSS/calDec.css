@@ -50,6 +50,41 @@ going to about me and home page */
   height: 40px;
 }
 
+/*Dropdown menu time*/
+.navPages {
+  position: relative;
+  padding: 0;
+}
+
+.dropdownPages {
+  background-color: dodgerblue;
+  padding: 0.5em 0;
+  position: absolute;
+  display: none;
+  border-radius: 8px;
+  top: 15px;
+}
+
+/*Now we need to code the hover. Took vid on why he did li + li - means we're choosing siblings (both children of services)*/
+.dropdownPages li + li {
+  margin-top: 0px;
+}
+
+.dropdownPages li {
+  padding: 0.5em 1em;
+  width: 7.5em;
+  text-align: center;
+}
+
+.dropdownPages li:hover {
+  background-color: yellow;
+  /* is there a way to haev this change the buttons color too? */
+}
+
+.navPages:hover .dropdownPages {
+  display: block;
+}
+
 /*Navbar menu */
 .menu {
   display: flex;
