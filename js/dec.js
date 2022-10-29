@@ -221,7 +221,6 @@ done_btn.addEventListener("click", (e) => {
   var reminderContent = document.getElementById("inputRem").value;
   console.log(reminderDate);
   console.log(reminderContent);
-  window.confirm("Your reminder has been created!");
   //problem rn: the reminderContent is working, same with the date and its substrings
   //what it's not doing is displaying content to the calendar.
   //day1.textContent += reminderContent + " "; //this works easily, but we want new line!
@@ -267,136 +266,290 @@ done_btn.addEventListener("click", (e) => {
   } else if (subDay == 1) {
     count01++;
     //keeping track of whether the user has inputted multiple reminders in one day
-    // recentReminder01 = "";
-    //don't need this, I'm stupid. It'll overwrite with the current reminder content
-    recentReminder01 = reminderContent + ". ";
-    console.log(recentReminder01);
-    day1.textContent += reminderContent + ". ";
-    //assuming that the user would not input punctuation into their reminders.
-    //I initially wrote if loops to check, but that cluttered up the code even more, so this will have to do.
+    if (reminderContent == "") {
+      //the user is trying to enter in nothing; should not be allowed.
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder01 = reminderContent + ". ";
+      console.log(recentReminder01);
+      day1.textContent += reminderContent + ". ";
+      //assuming that the user would not input punctuation into their reminders.
+      //I initially wrote if loops to check, but that cluttered up the code even more, so this will have to do.
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 2) {
     count02++;
-    recentReminder02 = reminderContent + ". ";
-    day2.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder02 = reminderContent + ". ";
+      day2.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 3) {
     count03++;
-    recentReminder03 = reminderContent + ". ";
-    day3.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder03 = reminderContent + ". ";
+      day3.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 4) {
     count04++;
-    recentReminder04 = reminderContent + ". ";
-    day4.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder04 = reminderContent + ". ";
+      day4.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 5) {
     count05++;
-    recentReminder05 = reminderContent + ". ";
-    day5.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder05 = reminderContent + ". ";
+      day5.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 6) {
     count06++;
-    recentReminder06 = reminderContent + ". ";
-    day6.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder06 = reminderContent + ". ";
+      day6.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 7) {
     count07++;
-    recentReminder07 = reminderContent + ". ";
-    day7.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder07 = reminderContent + ". ";
+      day7.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 8) {
     count08++;
-    recentReminder08 = reminderContent + ". ";
-    day8.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder08 = reminderContent + ". ";
+      day8.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 9) {
     count09++;
-    recentReminder09 = reminderContent + ". ";
-    day9.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder09 = reminderContent + ". ";
+      day9.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 10) {
     count10++;
-    recentReminder10 = reminderContent + ". ";
-    day10.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder10 = reminderContent + ". ";
+      day10.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 11) {
     count11++;
-    recentReminder11 = reminderContent + ". ";
-    day11.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder11 = reminderContent + ". ";
+      day11.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 12) {
     count12++;
-    recentReminder12 = reminderContent + ". ";
-    day12.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder12 = reminderContent + ". ";
+      day12.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 13) {
     count13++;
-    recentReminder13 = reminderContent + ". ";
-    day13.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder13 = reminderContent + ". ";
+      day13.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 14) {
     count14++;
-    recentReminder14 = reminderContent + ". ";
-    day14.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder14 = reminderContent + ". ";
+      day14.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 15) {
     count15++;
-    recentReminder15 = reminderContent + ". ";
-    day15.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder15 = reminderContent + ". ";
+      day15.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 16) {
     count16++;
-    recentReminder16 = reminderContent + ". ";
-    day16.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder16 = reminderContent + ". ";
+      day16.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 17) {
     count17++;
-    recentReminder17 = reminderContent + ". ";
-    day17.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder17 = reminderContent + ". ";
+      day17.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 18) {
     count18++;
-    recentReminder18 = reminderContent + ". ";
-    day18.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder18 = reminderContent + ". ";
+      day18.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 19) {
     count19++;
-    recentReminder19 = reminderContent + ". ";
-    day19.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder19 = reminderContent + ". ";
+      day19.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 20) {
     count20++;
-    recentReminder20 = reminderContent + ". ";
-    day20.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder20 = reminderContent + ". ";
+      day20.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 21) {
     count21++;
-    recentReminder21 = reminderContent + ". ";
-    day21.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder21 = reminderContent + ". ";
+      day21.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 22) {
     count22++;
-    recentReminder22 = reminderContent + ". ";
-    day22.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder22 = reminderContent + ". ";
+      day22.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 23) {
     count23++;
-    recentReminder23 = reminderContent + ". ";
-    day23.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder23 = reminderContent + ". ";
+      day23.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 24) {
     count24++;
-    recentReminder24 = reminderContent + ". ";
-    day24.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder24 = reminderContent + ". ";
+      day24.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 25) {
     count25++;
-    recentReminder25 = reminderContent + ". ";
-    day25.textContent += reminderContent + ". ";
-    day25.style.color = "red";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder25 = reminderContent + ". ";
+      day25.textContent += reminderContent + ". ";
+      day25.style.color = "red";
+      window.confirm("Your reminder has been created, Merry Christmas!");
+    }
   } else if (subDay == 26) {
     count26++;
-    recentReminder26 = reminderContent + ". ";
-    day26.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder26 = reminderContent + ". ";
+      day26.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 27) {
     count27++;
-    recentReminder27 = reminderContent + ". ";
-    day27.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder27 = reminderContent + ". ";
+      day27.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 28) {
     count28++;
-    recentReminder28 = reminderContent + ". ";
-    day28.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder28 = reminderContent + ". ";
+      day28.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 29) {
     count29++;
-    recentReminder29 = reminderContent + ". ";
-    day29.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder29 = reminderContent + ". ";
+      day29.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 30) {
     count30++;
-    recentReminder30 = reminderContent + ". ";
-    day30.textContent += reminderContent + ". ";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder30 = reminderContent + ". ";
+      day30.textContent += reminderContent + ". ";
+      window.confirm("Your reminder has been created!");
+    }
   } else if (subDay == 31) {
     count31++;
-    recentReminder31 = reminderContent + ". ";
-    day31.textContent += reminderContent + ". ";
-    document.getElementById("nye").className = "goldboi";
-    day31.style.color = "gold";
+    if (reminderContent == "") {
+      window.confirm("Please include a reminder!");
+    } else {
+      recentReminder31 = reminderContent + ". ";
+      day31.textContent += reminderContent + ". ";
+      document.getElementById("nye").className = "goldboi";
+      day31.style.color = "gold";
+      window.confirm("Your reminder has been created, happy New Years Eve!");
+    }
   } else {
     window.confirm("There has been an error. Please retry");
   }
