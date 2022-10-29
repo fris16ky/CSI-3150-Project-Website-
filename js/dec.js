@@ -225,7 +225,46 @@ done_btn.addEventListener("click", (e) => {
   //problem rn: the reminderContent is working, same with the date and its substrings
   //what it's not doing is displaying content to the calendar.
   //day1.textContent += reminderContent + " "; //this works easily, but we want new line!
-  if (subDay == 1) {
+
+  if (
+    day1.textContent.length >= 75 ||
+    day2.textContent.length >= 75 ||
+    day3.textContent.length >= 75 ||
+    day4.textContent.length >= 75 ||
+    day5.textContent.length >= 75 ||
+    day6.textContent.length >= 75 ||
+    day7.textContent.length >= 75 ||
+    day8.textContent.length >= 75 ||
+    day9.textContent.length >= 75 ||
+    day10.textContent.length >= 75 ||
+    day11.textContent.length >= 75 ||
+    day12.textContent.length >= 75 ||
+    day13.textContent.length >= 75 ||
+    day14.textContent.length >= 75 ||
+    day15.textContent.length >= 75 ||
+    day16.textContent.length >= 75 ||
+    day17.textContent.length >= 75 ||
+    day18.textContent.length >= 75 ||
+    day19.textContent.length >= 75 ||
+    day20.textContent.length >= 75 ||
+    day21.textContent.length >= 75 ||
+    day22.textContent.length >= 75 ||
+    day23.textContent.length >= 75 ||
+    day24.textContent.length >= 75 ||
+    day25.textContent.length >= 75 ||
+    day26.textContent.length >= 75 ||
+    day27.textContent.length >= 75 ||
+    day28.textContent.length >= 75 ||
+    day29.textContent.length >= 75 ||
+    day30.textContent.length >= 75 ||
+    day31.textContent.length >= 75
+  ) {
+    window.confirm(
+      "You have entered too many reminders for this day. Please choose a different day!"
+    );
+    //To stop the user from inputting too many reminders such that it would vertically stretch the calendar
+    //The user, for now, is still able to horizontally stretch it, with consecutive characters.
+  } else if (subDay == 1) {
     count01++;
     //keeping track of whether the user has inputted multiple reminders in one day
     // recentReminder01 = "";

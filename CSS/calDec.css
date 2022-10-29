@@ -54,9 +54,29 @@ going to about me and home page */
 .navPages {
   position: relative;
   padding: 0;
+  text-decoration: none;
+}
+.navPages > a {
+  text-align: center;
+  display: inline-block;
+}
+.navPages > ul {
+  position: relative;
+  display: none;
+}
+.navPages > ul > li {
+  display: block;
+  text-align: center;
+}
+.navPages > a:hover + ul {
+  display: block;
+}
+.navPages :hover {
+  display: block;
+  text-align: center;
 }
 
-.dropdownPages {
+/* .dropdownPages {
   background-color: dodgerblue;
   padding: 0.5em 0;
   position: absolute;
@@ -64,9 +84,20 @@ going to about me and home page */
   border-radius: 8px;
   top: 15px;
 }
+.dropdownPages > ul:hover {
+  display: block;
+} */
+
+/* .navPages:hover {
+  display: block;
+} */
+
+/* .navPages:hover .dropdownPages {
+  display: block;
+} */
 
 /*Now we need to code the hover. Took vid on why he did li + li - means we're choosing siblings (both children of services)*/
-.dropdownPages li + li {
+/* .dropdownPages li + li {
   margin-top: 0px;
 }
 
@@ -74,16 +105,12 @@ going to about me and home page */
   padding: 0.5em 1em;
   width: 7.5em;
   text-align: center;
-}
+} */
 
-.dropdownPages li:hover {
-  background-color: yellow;
-  /* is there a way to haev this change the buttons color too? */
-}
-
-.navPages:hover .dropdownPages {
-  display: block;
-}
+/* .dropdownPages li:hover {
+  background-color: yellow; */
+/* is there a way to have this change the buttons color too? */
+/* } */
 
 /*Navbar menu */
 .menu {
@@ -112,8 +139,8 @@ going to about me and home page */
   position: relative;
   padding: 0;
 }
-  .delete > ul:hover {
-    display: block;
+.delete > ul:hover {
+  display: block;
 }
 
 .dropdown {
@@ -404,6 +431,7 @@ block doesn't work afaik */
 .changeMonth {
   text-align: right;
   margin-right: 343px;
+  margin-top: 5px;
 }
 
 .defaultny {
