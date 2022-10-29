@@ -1,0 +1,326 @@
+/* style sheet for html file in ../html/november.html */
+
+/*so I'm pretty sure style_navbar is useless, since we copied that code here, right?*/
+
+/*Apply basic CSS to the webpage */
+* {
+  /*For everything in the page: remove all margin and paddings, add a box*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: cursive;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/*Starting to style the nav bar. New Property - flexbox:
+canvas where you can draw certain things */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: dodgerblue;
+  color: black;
+  border-radius: 3px;
+}
+
+.navlinks a {
+  /*Only Anchor tags from the navlinks class*/
+  color: white;
+}
+
+/*Styling the logo */
+.logo {
+  font-size: 32px; /*Only works for this bc we're using text as our logo */
+}
+
+/*Navbar menu */
+.menu {
+  display: flex;
+  gap: 1em; /*Gap of one em. no clue what em is rofl*/
+  font-size: 11px;
+}
+
+.menu li {
+  padding: 5px 14px; /*Top and bottom, left and right*/
+}
+
+/*Working on transitions. Give an animation when you hover over one of the links*/
+.menu li:hover {
+  background-color: silver;
+  border-radius: 5px;
+  transition: 0.3s ease; /*After a .3 second delay, ease in*/
+}
+
+.menu li {
+  padding: 5px 10px; /*After this transition goes on, change the padding back to normal*/
+}
+
+/*Dropdown menu time*/
+.create {
+  position: relative;
+  padding: 0;
+}
+
+.dropdown {
+  background-color: fuchsia;
+  padding: 0.5em 0;
+  position: absolute;
+  display: none;
+  border-radius: 8px;
+  top: 14px;
+}
+
+/*Now we need to code the hover. Took vid on why he did li + li - means we're choosing siblings (both children of services)*/
+.dropdown li + li {
+  margin-top: 0px;
+}
+
+.dropdown li {
+  padding: 0.5em 1em;
+  width: 7.5em;
+  text-align: center;
+}
+
+.dropdown li:hover {
+  background-color: aquamarine;
+  /* is there a way to haev this change the buttons color too? */
+}
+
+.create:hover .dropdown {
+  display: block;
+}
+
+/*Responsive nav bar*/
+
+/*Style the checkbox and then the hamburger menu icon */
+input[type="checkbox"] {
+  display: none;
+}
+
+/*Hamburger menu icon*/
+.hamburger {
+  display: none; /*default none since we don't want these to show on computer sites. Only for mobile*/
+  font-size: 24px;
+  user-select: none;
+}
+
+/*Figure out what device is accessing our webpage
+CSS Media queries. 760 roughly the size for desktops*/
+@media (max-width: 760px) {
+  .menu {
+    display: none;
+    position: absolute;
+    background-color: thistle;
+    right: 0;
+    left: 0; /*remove right and left margins*/
+    text-align: center;
+    padding: 16px 0;
+  }
+  .menu li:hover {
+    display: inline-block;
+    background-color: darksalmon;
+    transition: 0.3s ease; /*Doing same transitions for mobile devices*/
+  }
+
+  .menu li + li {
+    /*li items adjacent to each other*/
+    margin-top: 15px;
+  }
+  input[type="checkbox"]:checked ~ .menu {
+    display: block;
+  } /*if the input type of type checkbox is checked, we are displaying the menu now, as a block*/
+
+  .hamburger {
+    display: block;
+  }
+  .dropdown {
+    left: 40%;
+    top: 30px;
+    transform: translateX(35%);
+    /*Menu items needs to keep moving to the left size*/
+  }
+  .dropdown li:hover {
+    background-color: beige;
+  }
+}
+
+/* This is where the Calendar CSS starts */
+
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-style: oblique;
+  /* position property */
+  position: relative;
+  /* position offset top and left */
+  top: 25%;
+  left: 2%;
+}
+
+/* div container for calender  */
+.calendar_container {
+  /* position property */
+  position: relative;
+  /* position offset top and left */
+  top: 75%;
+  left: 25%;
+  /* box model properties */
+  border: 20px;
+  margin: auto;
+  padding: 5px;
+}
+
+/* basic style rules for the table */
+#calendar_table {
+  /* text color and background color */
+  color: rgb(12, 9, 2);
+  background-color: black;
+  /* separation between coloumns */
+  border-spacing: 2px;
+  /* making table borders */
+  border: 2px solid black;
+  /* table width */
+  width: 50%;
+}
+
+#calendar_table thead {
+  color: white;
+  background-color: magenta;
+}
+
+/* apply alternate colors to tr elements within tbody using pseudo elements this excludes table header */
+tbody tr:nth-child(n) {
+  background-color: white;
+}
+
+tbody tr:nth-child(6) {
+  /*This is for rows. */
+  background-color: lightgray;
+}
+
+.sndtolast {
+  background-color: lightgray;
+}
+
+.lastofMonth {
+  background-color: lightgray;
+}
+
+.fdec {
+  background-color: lightgray;
+}
+.twdec {
+  background-color: lightgray;
+}
+.thdec {
+  background-color: lightgray;
+}
+
+/* add some spacing to the cells  */
+#calender_table th,
+#calender_table td {
+  margin: 2px;
+  padding-bottom: 2px;
+}
+
+/* curve the corners of the calender row last child -- optional */
+/* tr:last-child{
+    border-radius: 0px 0px 30px 30px;
+} */
+/* select last row's first cell and curve the left side of the border -- optional */
+/* tr:last-child>td:first-child{
+    border-radius: 0 0 0 30px;
+} */
+/* select last row's last cell and curve the bottom side of the border -- optional */
+/* tr:last-child>td:last-child{
+    border-radius: 0 0 30px 0;
+} */
+
+/* give some style to the caption */
+#calendar_table caption {
+  background-color: white;
+  color: silver;
+  font-weight: bolder;
+  font-size: 125%;
+  border-radius: 25px 25px 0 0;
+  text-transform: uppercase;
+  border: 2px solid black;
+}
+/* format table cells space alignment etc */
+#calendar_table td {
+  width: 100px;
+  height: 100px;
+  vertical-align: top;
+}
+/* outline any holidays or special event on the calendar. create a class and assign to specific td */
+.holiday {
+  background-color: cyan;
+}
+
+/* hide calender events by default.  */
+#calendar_table span {
+  display: block;
+  text-align: left;
+  color: rgb(146, 66, 202);
+  visibility: hidden;
+}
+/* use psuedo classes on the td elements and span element to show event when dates are clicked with a * mark */
+/* display events either on click or hover. YOu should also add for focus */
+#calendar_table td:active > span {
+  visibility: visible;
+}
+#calendar_table td:hover > span {
+  visibility: visible;
+}
+/* try yourself - make the fonts on the dates that don't belong to october lighter - just as actual calenders do */
+
+/*Button code*/
+.today_btn,
+.future_btn,
+.delete_btn {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /* this is a neat effect */
+}
+
+.today_btn button {
+  background-color: magenta;
+  border: none;
+}
+
+.today_btn button:hover {
+  background-color: aquamarine;
+}
+
+.future_btn button {
+  background-color: magenta;
+  border: none;
+}
+
+.future_btn :hover {
+  background-color: aquamarine;
+}
+
+.delete_btn button {
+  background-color: dodgerblue;
+  border: transparent;
+  color: white;
+  font-size: 11px;
+}
+
+.delete_btn :hover {
+  background-color: silver;
+}

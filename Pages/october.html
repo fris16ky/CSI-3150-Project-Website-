@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar for October, 2022</title>
+
+    <!--CSS Links-->
+    <link rel="stylesheet" href="../CSS/calstyle.css" />
+
+    <!-- JS -->
+    <script src="../JS/october.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <!--logo-->
+      <div class="logo">Demo For Creating Calendars</div>
+      <!-- Later, this will be a picture of Mia? 
+      ALSO!!! Don't forget to to add icons to the top of the webpage (i.e. vlr at the top of chrome)
+      We did this early on - should be in index.html-->
+
+      <!--navigation menu-->
+      <div class="navlinks">
+        <!--(ONLY FOR MOBILE) mobile checkbox hack-->
+        <!-- <<input type="checkbox" id="checkbox_toggle" />
+        <label for="checkbox_toggle" class="hamburger">&#9776;</label> -->
+
+        <!-- this I WILL need, but for now it's being a fucking pain in the ass. the arrow is annoying as FUCK
+and it gets in the way of having my Create Reminder dropdown work (can't figure out how to extend)
+the space for hover; and can't move it higher bc arrow is in the way. BS man -->
+
+        <!--Navigation Links-->
+        <div class="menu">
+          <li class="create">
+            <a href="#">Create Reminder</a>
+            <!-- Drop-down menu here -->
+            <ul class="dropdown">
+              <!-- <li><a href="#">Today</a></li> -->
+              <li>
+                <div class="today_btn"><button>Today</button></div>
+              </li>
+              <li>
+                <div class="future_btn"><button>Future</button></div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div class="delete_btn"><button>Delete Reminder</button></div>
+          </li>
+        </div>
+      </div>
+    </nav>
+    <!-- <header>
+      <h1>A demo for creating Calenders</h1>
+    </header> -->
+    <nav>
+      <menu>
+        <ul>
+          <li><a href="../index.html">Index</a></li>
+        </ul>
+      </menu>
+    </nav>
+
+    <div class="calendar_container">
+      <table id="calendar_table">
+        <caption>
+          Month: October, 2022
+        </caption>
+        <thead>
+          <tr>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>25</td>
+            <td>26</td>
+            <td>
+              27* <br />
+              <span>
+                <ul>
+                  <li>CSI 3450</li>
+                  <li>CSI 2520</li>
+                </ul>
+              </span>
+            </td>
+            <td>28</td>
+            <td>
+              29* <br />
+              <span>
+                <ul>
+                  <li>CSI 3450</li>
+                  <li>CSI 2520</li>
+                </ul>
+              </span>
+            </td>
+            <td>30</td>
+            <td class="firstofMonth">01</td>
+          </tr>
+
+          <tr>
+            <td>
+              02
+              <br />
+              <span id="02day"></span>
+            </td>
+            <td>03</td>
+            <td>04</td>
+            <td>05</td>
+            <td>06</td>
+            <td>07</td>
+            <td>08</td>
+          </tr>
+
+          <tr>
+            <td>09</td>
+            <td class="holiday">
+              10* <br />
+              <span>Indigenous People's day</span>
+            </td>
+            <td>11</td>
+            <td>12</td>
+            <td>13</td>
+            <td>14</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>17</td>
+            <td>
+              18* <br />
+              <span>
+                <ul>
+                  <li>CSI 3450</li>
+                  <li>CSI 2520</li>
+                </ul>
+              </span>
+            </td>
+            <td>19</td>
+            <td>20</td>
+            <td class="holiday">
+              21* <br />
+              <span>Fall Break</span>
+            </td>
+            <td>
+              22
+              <br />
+              <span id="22day"></span>
+            </td>
+          </tr>
+
+          <tr>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+            <td>26</td>
+            <td>27</td>
+            <td>
+              28* <br />
+              <span>SECS Research Expo</span>
+            </td>
+            <td>29</td>
+          </tr>
+
+          <tr>
+            <td class="b4hallow">30</td>
+            <td class="hallow">
+              31 <br />
+              <span>Halloween</span>
+            </td>
+            <td>01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>04</td>
+            <td>05</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

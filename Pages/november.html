@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar for November, 2022</title>
+
+    <!--CSS Links-->
+    <link rel="stylesheet" href="../CSS/calNov.css" />
+
+    <!-- JS -->
+    <script src="../JS/nov.js" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <!--logo-->
+      <div class="logo">Demo For Creating Calendars</div>
+      <!-- Later, this will be a picture of Mia? 
+      ALSO!!! Don't forget to to add icons to the top of the webpage (i.e. vlr at the top of chrome)
+      We did this early on - should be in index.html-->
+
+      <!--navigation menu-->
+      <div class="navlinks">
+        <!--(ONLY FOR MOBILE) mobile checkbox hack-->
+        <!-- <<input type="checkbox" id="checkbox_toggle" />
+        <label for="checkbox_toggle" class="hamburger">&#9776;</label> -->
+
+        <!-- this I WILL need, but for now it's being a fucking pain in the ass. the arrow is annoying as FUCK
+and it gets in the way of having my Create Reminder dropdown work (can't figure out how to extend)
+the space for hover; and can't move it higher bc arrow is in the way. BS man -->
+
+        <!--Navigation Links-->
+        <div class="menu">
+          <li class="create">
+            <a href="#">Create Reminder</a>
+            <!-- Drop-down menu here -->
+            <ul class="dropdown">
+              <!-- <li><a href="#">Today</a></li> -->
+              <li>
+                <div class="today_btn"><button>Today</button></div>
+              </li>
+              <li>
+                <div class="future_btn"><button>Future</button></div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <div class="delete_btn"><button>Delete Reminder</button></div>
+          </li>
+        </div>
+      </div>
+    </nav>
+    <!-- <header>
+      <h1>A demo for creating Calenders</h1>
+    </header> -->
+    <nav>
+      <menu>
+        <ul>
+          <li><a href="../index.html">Index</a></li>
+        </ul>
+      </menu>
+    </nav>
+
+    <div class="calendar_container">
+      <table id="calendar_table">
+        <caption>
+          Month: November, 2022
+        </caption>
+        <thead>
+          <tr>
+            <th>Sunday</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="sndtolast">30</td>
+            <td class="lastofMonth">31</td>
+            <td>01</td>
+            <td>02</td>
+            <td>03</td>
+            <td>04</td>
+            <td>05</td>
+          </tr>
+
+          <tr>
+            <td>06</td>
+            <td>07</td>
+            <td>08</td>
+            <td>09</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+          </tr>
+
+          <tr>
+            <td>13</td>
+            <td class="holiday">
+              14 <br />
+              <span>Holiday template</span>
+            </td>
+            <td>15</td>
+            <td>16</td>
+            <td>17</td>
+            <td>18</td>
+            <td>19</td>
+          </tr>
+          <tr>
+            <td>20</td>
+            <td>21</td>
+            <td>22</td>
+            <td>23</td>
+            <td>24</td>
+            <td>25</td>
+            <td>26</td>
+          </tr>
+
+          <tr>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td class="fdec">01</td>
+            <td class="twdec">02</td>
+            <td class="thdec">03</td>
+          </tr>
+
+          <tr>
+            <td>04</td>
+            <td>05</td>
+            <td>06</td>
+            <td>07</td>
+            <td>08</td>
+            <td>09</td>
+            <td>10</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
