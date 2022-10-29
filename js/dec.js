@@ -30,6 +30,8 @@ var day28 = document.getElementById("28day");
 var day29 = document.getElementById("29day");
 var day30 = document.getElementById("30day");
 var day31 = document.getElementById("nyEve");
+//Creating global variables and initializing them to empty string; will later be used to
+//keep track of the most recent reminder for each day
 var recentReminder01 = "",
   recentReminder02 = "",
   recentReminder03 = "",
@@ -61,6 +63,7 @@ var recentReminder01 = "",
   recentReminder29 = "",
   recentReminder30 = "",
   recentReminder31 = "";
+//Global count variables to keep track of how many reminders the user has set each day
 var count01 = 0,
   count02 = 0,
   count03 = 0,
@@ -101,130 +104,49 @@ const done_btn = document.querySelector(".done_btn button");
 const submitOne_btn = document.querySelector(".submitOne_btn button");
 const submit_btn = document.querySelector(".submit_btn button");
 
-const monthArray = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-];
-
-//getting the date and month in order to put accurate reminders on the calendar
-const currentDay = new Date();
-const currentMonth = new Date();
-currentDay.getDate; //integer - 1-31.
-currentMonth.getMonth; //integer - 0 for Jan, 11 for Dec
-//for get month: when it's being used beyond the scope of this project (i.e. if I'm showing it to people past December)
-//I'll need an else statement. If (currentMonth === 9), month is Oct. elif (===10) nov, elif(===11) is dec.
-//else (being accessed beyond this year), windows.prompt("Welcome to 2023! Sorry, but this is beyond the scope of this website for
-//now, so you will not be able to set any reminders! Apologies for any inconvenience this may cause. ")
-
+//Code for what happens when the user clicks the "Create Reminder" button
 create_btn.addEventListener("click", (e) => {
-  document.getElementById("userInputRem").className = "show";
   //showing the input box
-  //To be honest, this may be all we need to do under the create_btn click.
-  //The rest will need to be done with the input from the input boxes.
-
-  //so for the new input way, we'll need two prompts. Month and Day. When the month is entered, we'll have to check
-  //if userMonth == "January" or "january".
-  //Googling said that this should be better: a.localeCompare(b, undefined, { sensitivity: 'accent' }) === 0
-  //where a is the input string, b is what we want to compare. So, we can put "January" for b
-  //either run a for loop thru the months we don't want, and compare array[index] each time
-
-  // for (let i = 0; i < 9; i++) {
-  //   //0 thru 8 since there are 9 months we don't want (Jan to sept)
-  //   if (
-  //     //rn, userInput is a default. Haven't started the new code. Hopefully it'll be simple
-  //     userInput.localeCompare(monthArray[i], undefined, {
-  //       sensitivity: "base",
-  //     }) === 0
-  //   ) {
-  //     //^^This compares the user inputted month to every month we don't carry, while ignoring case and accents (january and January
-  //     //and Jánuary are the same)
-  //     //the user is trying to put a reminder for a month we do not allow
-  //     windows.prompt(
-  //       "Please enter a different month! We currently only support months until the end of the year, sorry!"
-  //     );
-  //   }
-  //mayhaps an else here. If the user is inputting a valid month
-  //hmmmm... so the else here is two things.
-  //one elif: if userInput.localeCompare("October", etc.) || localeCompare("November") || December,
-  //then do the code for that? Or maybe set a value here, like count == 1;
-  //^If they input October, November or December (but ignore December for this one; continue) - we need to swap the pages
-  //to that. October --> october.html, Nov -> november.html, December -> count == 1;
-
-  //so we can do the actual calculations outside of this loop, and can use count as a parameter.
-  //I think that'd be best. Altho, this still is within the onClick method, so maybe it wouldn't be too bad.
-  //If possible, get the count working. I'd still like to keep it separate, since I imagine it'll be a fair bit of code.
-
-  //then the else {} would be if the user misspelled or just entered an invalid word altogether.
-  //to which, we'd windows.prompt("Sorry, it seems the month you tried to enter is misspelled, or not a month at all!
-  //please retry with a correct month, thanks!");
-  //}
-
-  //let reminder = prompt("Please enter your reminder", "Enter Here");
-  //we want this to be an input box instead of a Windows Prompt. We did this once before I believe. For email and user
-  //But the prof sent us a link or two to help with this.
-
-  // let time = prompt(
-  //   "What time would you like your reminder?",
-  //   "Format: 00:00 -- Military Time!"
-  //   //will be getting rid of the time aspect; obselete
-  // );
-  // let text;
-  // // let counter = 0; counter code was from trying to figure out multiple reminders in one day
-  // if (reminder == null || reminder == "") {
-  //   text = "User cancelled the prompt :(";
-  // } else {
-  //   if (parseInt(time.substring(0, 2)) <= 11) {
-  //     //if reminder is during the day (AM) -- obselete for now; getting rid of time component
-  //     text =
-  //       "Your reminder is '" +
-  //       reminder +
-  //       "' at " +
-  //       time.substring(0, 5) +
-  //       "am today";
-  //   } else {
-  //     //reminder is in the afternoon
-  //     text =
-  //       "Your reminder is '" +
-  //       reminder +
-  //       "' at " +
-  //       time.substring(0, 5) +
-  //       "pm today";
-  //   }
-
-  //   day3.textContent += "\n" + reminder;
-  // }
-  // window.confirm(text);
-  //old code
+  //Only display the create reminder input box if it's the only input being shown
+  if (
+    document.getElementById("userInputDeleteOne").className == "hide" &&
+    document.getElementById("userInputDeleteAll").className == "hide"
+  ) {
+    document.getElementById("userInputRem").className = "show";
+  } else {
+    //If the user tries to click on multiple buttons at the same time,
+    //Inform them, then hide all inputs
+    window.confirm("Please select only one operation at a time!");
+    document.getElementById("userInputDeleteOne").className = "hide";
+    document.getElementById("userInputDeleteAll").className == "hide";
+    document.getElementById("userInputRem").className = "hide";
+  }
+  //For some reason, despite these checks, Delete All still shows if you click it first, then another button
+  //But this manual check gets rid of the problem, although I'm not sure why the other code doesn't.
+  if (document.getElementById("userInputDeleteAll").className === "show") {
+    document.getElementById("userInputDeleteAll").className = "hide";
+  }
 });
 
-//Done button code
+//Done button code for creating a Reminder
 done_btn.addEventListener("click", (e) => {
   //Here, we will take the input of month and reminder content from the user.
-  //when done is clicked, we will also hide everything, and take the user to the month html page that they set the
-  //reminder for. Hmm, actually. What if we windows.prompt saying "Your reminder has been created. Click ok to be
-  //transported to that page". Or maybe it won't wait for ok to be clicked to transport. unsure
+  //When done is clicked, we will also hide the user Input block
+  //(so the user can't input more reminders unless they click Create Reminder again)
 
   //input from month box:
   var reminderDate = document.getElementById("inputDate").value;
-  let subMonth = reminderDate.substring(5, 7);
-  let subDay = reminderDate.substring(8, 10); //1 to 31. Don't think I need to worry about it getting past the allowed
-  //day (i.e. 31 for November)
-  //subMonth is now the month in number form (10 = oct, 11 = nov, 12 = dec)
-  //input from the input box:
+  let subMonth = reminderDate.substring(5, 7); //should always get 12 for December
+  let subDay = reminderDate.substring(8, 10); //1 to 31. Don't think I need to worry about it getting past the allowed day
+
+  //Reminder input from the input box:
   var reminderContent = document.getElementById("inputRem").value;
+  //keeping track to make sure that the reminderDate and reminderContent receieved the correct values
   console.log(reminderDate);
   console.log(reminderContent);
-  //problem rn: the reminderContent is working, same with the date and its substrings
-  //what it's not doing is displaying content to the calendar.
-  //day1.textContent += reminderContent + " "; //this works easily, but we want new line!
 
+  //Making sure the user cannot put in reminders totaling 75 characters in length - otherwise the
+  //calendar will stretch vertically and be disproportionate
   if (
     day1.textContent.length >= 75 ||
     day2.textContent.length >= 75 ||
@@ -261,8 +183,7 @@ done_btn.addEventListener("click", (e) => {
     window.confirm(
       "You have entered too many reminders for this day. Please choose a different day!"
     );
-    //To stop the user from inputting too many reminders such that it would vertically stretch the calendar
-    //The user, for now, is still able to horizontally stretch it, with consecutive characters.
+    //The user, for now, is still able to horizontally stretch it, with consecutive characters. However, this case is very rare
   } else if (subDay == 1) {
     count01++;
     //keeping track of whether the user has inputted multiple reminders in one day
@@ -270,11 +191,17 @@ done_btn.addEventListener("click", (e) => {
       //the user is trying to enter in nothing; should not be allowed.
       window.confirm("Please include a reminder!");
     } else {
+      //The users reminder has content
+      //Assuming that the user would not input punctuation to their agenda/reminders, we provide them with one.
+      //This also helps differentiate successive reminders, since I could not figure out the dynamically
+      //adding new spans for each reminder
+      //Chose adding a period regardless instead of more if loops checking for punctuation
+
       recentReminder01 = reminderContent + ". ";
+      //keeping track of the users recently set reminder. Automatically overwrites with new reminders.
       console.log(recentReminder01);
+      //logging the users complete reminder
       day1.textContent += reminderContent + ". ";
-      //assuming that the user would not input punctuation into their reminders.
-      //I initially wrote if loops to check, but that cluttered up the code even more, so this will have to do.
       window.confirm("Your reminder has been created!");
     }
   } else if (subDay == 2) {
@@ -554,150 +481,109 @@ done_btn.addEventListener("click", (e) => {
     window.confirm("There has been an error. Please retry");
   }
 
-  //now we need to dynamically add spans based on what day they selected.
-  // function addElement() {
-  //   var newSpan = document.createElement("span");
-  //   //give it content
-  //   //const newContent = document.createTextNode(reminderContent);
-  //   //add to newly created span
-  //   //newSpan.appendChild(newContent);
-  //   newSpan.innerHTML = reminderContent;
-  //   //add newly created element & its content into the DOM
-  //   var currentSpan = document.getElementById("01day");
-  //   currentSpan.appendChild(newSpan);
-  //   //currentSpan.after(newSpan);
-  //   //document.body.insertBefore(newSpan, currentSpan);
-  // }
-  //this is a shit show. None of this code works, despite BEING FROM THE PROFESSORS INTERNET HELP
-
-  //document.body.onload = addElement;
+  //Hiding the input block after the reminder has been set (or failed to be set due to empty or another error)
   document.getElementById("userInputRem").className = "hide";
 });
 
 delone_btn.addEventListener("click", (e) => {
-  //delete code time! unsure how to do this as of now. Might not be able to delete only one.
-  //maybe deal with reminderContent's length? And delete things that long? or simply
-  //repaste with a substring up until the end length - the most recent reminder length?
-  //either way, do this one last, if at all.
-  document.getElementById("userInputDeleteOne").className = "show";
+  //Deleting the user's recently added reminder
   if (
-    document.getElementById("userInputRem").className == "show" ||
-    document.getElementById("userInputDeleteAll").className == "show"
+    document.getElementById("userInputRem").className == "hide" &&
+    document.getElementById("userInputDeleteAll").className == "hide"
   ) {
-    //If the user is trying to perform multiple actions at once, only let them do one.
-    window.confirm(
-      "Please select either Create a Reminder OR Delete a Reminder!"
-    );
+    document.getElementById("userInputDeleteOne").className = "show";
+  } else {
+    //If the user tries to click on multiple buttons at the same time,
+    //Inform them, then hide all inputs
+    document.getElementById("userInputDeleteOne").className = "hide";
+    document.getElementById("userInputDeleteAll").className == "hide";
     document.getElementById("userInputRem").className = "hide";
+    window.confirm("Please select only one operation at a time!");
+  }
+  //Manual check for Delete All since it seems to ignore my code
+  if (document.getElementById("userInputDeleteAll").className === "show") {
     document.getElementById("userInputDeleteAll").className = "hide";
-    document.getElementById("userInputDeleteOne").className == "hide";
   }
 });
 
 submitOne_btn.addEventListener("click", (e) => {
-  //so the idea I had for this: declare a global variable (var) set to the most recent textContent
-
-  //this is code for when the user picks out which day they want to remove the most recent reminder
+  //The user has picked and submitted which day they want to remove a reminder (cannot be null)
   //input from month box:
   var delRecent = document.getElementById("deleteOneDate").value;
-  let subMonth = delRecent.substring(5, 7);
-  //I don't think I need subMonth ngl
-  let subDay = delRecent.substring(8, 10); //1 to 31. Don't think I need to worry about it getting past the allowed
-  //day (i.e. 31 for November)
-
+  let subDay = delRecent.substring(8, 10);
   console.log(delRecent);
-  //problem rn: the reminderContent is working, same with the date and its substrings
-  //what it's not doing is displaying content to the calendar.
-  //day1.textContent += reminderContent + " "; //this works easily, but we want new line!
+  //Checking which day the user inputted
   if (subDay == 1) {
-    //assuming that our grabRecentReminder code works, we just need to run .replace
-    //so, if any of the counts === 0 (we dont want it to run if count == "0"), then there's no reminder, so we
-    //tell the user such.
     if (count01 === 0) {
-      //then we have no reminders
+      //If the user has not set a reminder for this day (count is 0)
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
+      //We have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder01 + " Will be removed");
+      //Logging every removed reminder
       day1.textContent = day1.textContent.replace(recentReminder01, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 2) {
     if (count02 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder02 + " Will be removed");
       day2.textContent = day2.textContent.replace(recentReminder02, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 3) {
     if (count03 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder03 + " Will be removed");
       day3.textContent = day3.textContent.replace(recentReminder03, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 4) {
     if (count04 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder04 + " Will be removed");
       day4.textContent = day4.textContent.replace(recentReminder04, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 5) {
     if (count05 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder05 + " Will be removed");
       day5.textContent = day5.textContent.replace(recentReminder05, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 6) {
     if (count06 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder06 + " Will be removed");
       day6.textContent = day6.textContent.replace(recentReminder06, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 7) {
     if (count07 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder07 + " Will be removed");
       day7.textContent = day7.textContent.replace(recentReminder07, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 8) {
     if (count08 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder08 + " Will be removed");
       day8.textContent = day8.textContent.replace(recentReminder08, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 9) {
     if (count09 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder09 + " Will be removed");
       day9.textContent = day9.textContent.replace(recentReminder09, "");
       window.confirm("The most recent reminder has been deleted!");
@@ -714,90 +600,72 @@ submitOne_btn.addEventListener("click", (e) => {
     }
   } else if (subDay == 11) {
     if (count11 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder11 + " Will be removed");
       day11.textContent = day11.textContent.replace(recentReminder11, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 12) {
     if (count12 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder12 + " Will be removed");
       day12.textContent = day12.textContent.replace(recentReminder12, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 13) {
     if (count13 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder13 + " Will be removed");
       day13.textContent = day13.textContent.replace(recentReminder13, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 14) {
     if (count14 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder14 + " Will be removed");
       day14.textContent = day14.textContent.replace(recentReminder14, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 15) {
     if (count15 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder15);
       day15.textContent = day15.textContent.replace(recentReminder15, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 16) {
     if (count16 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder16 + " Will be removed");
       day16.textContent = day16.textContent.replace(recentReminder16, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 17) {
     if (count17 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder17 + " Will be removed");
       day17.textContent = day17.textContent.replace(recentReminder17, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 18) {
     if (count18 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder18 + " Will be removed");
       day18.textContent = day18.textContent.replace(recentReminder18, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 19) {
     if (count19 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder19 + " Will be removed");
       day19.textContent = day19.textContent.replace(recentReminder19, "");
       window.confirm("The most recent reminder has been deleted!");
@@ -814,90 +682,72 @@ submitOne_btn.addEventListener("click", (e) => {
     }
   } else if (subDay == 21) {
     if (count21 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder21 + " Will be removed");
       day21.textContent = day21.textContent.replace(recentReminder21, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 22) {
     if (count22 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder22 + " Will be removed");
       day22.textContent = day22.textContent.replace(recentReminder22, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 23) {
     if (count23 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder23 + " Will be removed");
       day23.textContent = day23.textContent.replace(recentReminder23, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 24) {
     if (count24 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder24 + " Will be removed");
       day24.textContent = day24.textContent.replace(recentReminder24, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 25) {
     if (count25 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder25 + " Will be removed");
       day25.textContent = day25.textContent.replace(recentReminder25, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 26) {
     if (count26 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder26 + " Will be removed");
       day26.textContent = day26.textContent.replace(recentReminder26, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 27) {
     if (count27 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder27 + " Will be removed");
       day27.textContent = day27.textContent.replace(recentReminder27, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 28) {
     if (count28 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder28 + " Will be removed");
       day28.textContent = day28.textContent.replace(recentReminder28, "");
       window.confirm("The most recent reminder has been deleted!");
     }
   } else if (subDay == 29) {
     if (count29 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder29 + " Will be removed");
       day29.textContent = day29.textContent.replace(recentReminder29, "");
       window.confirm("The most recent reminder has been deleted!");
@@ -914,10 +764,8 @@ submitOne_btn.addEventListener("click", (e) => {
     }
   } else if (subDay == 31) {
     if (count31 === 0) {
-      //then we have no reminders
       window.confirm("This day does not have a reminder!");
     } else {
-      //we have reminders, replace the most recent with empty quotes ""
       console.log(recentReminder31 + " Will be removed");
       day31.textContent = day31.textContent.replace(recentReminder31, "");
       window.confirm("The most recent reminder has been deleted!");
@@ -926,58 +774,42 @@ submitOne_btn.addEventListener("click", (e) => {
     window.prompt("There has been an error. Please retry");
   }
 
-  //hide delete prompt after it's been used
+  //Hide delete prompt after it's been used
   document.getElementById("userInputDeleteOne").className = "hide";
 });
 
 delmult_btn.addEventListener("click", (e) => {
-  //add code for an input date; same as before.
-  //They'll select the date for the nuke, then that day.textContent = "";
-  //might need to do another 31 if loops to determine which day it'll be.
-  document.getElementById("userInputDeleteAll").className = "show";
+  //Deleting all reminders from one day
+  //Making sure this is the only input button that has been pressed
   if (
-    document.getElementById("userInputRem").className == "show" ||
-    document.getElementById("userInputDeleteOne").className == "show"
+    document.getElementById("userInputDeleteOne").className == "hide" &&
+    document.getElementById("userInputRem").className == "hide"
   ) {
-    //If the user is trying to perform multiple actions at once, only let them do one.
-    window.confirm(
-      "Please select either Create a Reminder OR Delete a Reminder!"
-    );
+    document.getElementById("userInputDeleteAll").className = "show";
+  } else {
+    //If the user tries to click on multiple buttons at the same time,
+    //Inform them, then hide all inputs
+    window.confirm("Please select only one operation at a time!");
+    document.getElementById("userInputDeleteOne").className = "hide";
+    document.getElementById("userInputDeleteAll").className == "hide";
     document.getElementById("userInputRem").className = "hide";
-    document.getElementById("userInputDeleteAll").className = "hide";
-    document.getElementById("userInputDeleteOne").className == "hide";
   }
 });
 
 submit_btn.addEventListener("click", (e) => {
-  //this is code for when the user picks out which day they want to remove all reminders
   //input from month box:
   var delAll = document.getElementById("deleteDate").value;
   let subMonth = delAll.substring(5, 7);
-  let subDay = delAll.substring(8, 10); //1 to 31. Don't think I need to worry about it getting past the allowed
-  //day (i.e. 31 for November)
-  //subMonth is now the month in number form (10 = oct, 11 = nov, 12 = dec)
-  //input from the input box:
-
-  // if (subMonth == 10) {
-  //   window.location.href = "./october.html";
-  // }
-  //^^ This works! Now, need to figure out some things. Do we let users create and delete reminders of other months
-  //from this page? Probably shouldn't, right?
-  //so maybe add the navigation arrows. Previous Month, Next Month (null for December). And change the scope of the dates
-  //to only the current month.
-
+  let subDay = delAll.substring(8, 10);
   console.log(delAll);
-  //problem rn: the reminderContent is working, same with the date and its substrings
-  //what it's not doing is displaying content to the calendar.
-  //day1.textContent += reminderContent + " "; //this works easily, but we want new line!
+
   if (subDay == 1) {
     if (day1.textContent == "") {
-      //if the date currently does not have any reminders to remove, do not proceed
+      //If the date currently does not have any reminders to remove, do not proceed
       window.confirm("This day does not have a reminder!");
       stop;
     } else {
-      //the date DOES have reminders to remove; remove them.
+      //The date DOES have reminders to remove; remove them.
       //We also want to display to the user that we have removed the reminders
       day1.textContent = "";
       window.confirm(
@@ -1287,6 +1119,6 @@ submit_btn.addEventListener("click", (e) => {
     window.prompt("There has been an error. Please retry");
   }
 
-  //hide delete prompt after it's been used
+  //Hide delete prompt after it's been used
   document.getElementById("userInputDeleteAll").className = "hide";
 });
