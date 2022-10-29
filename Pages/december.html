@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar for December, 2022</title>
 
-    <!-- Font Awesome credit -->
+    <!-- Font Awesome credit -- used for the Previous and Next Month arrows-->
     <script
       src="https://kit.fontawesome.com/c976334f11.js"
       crossorigin="anonymous"
@@ -39,8 +39,6 @@
           <nav>
             <li class="navPages">
               <a href="#">Pages</a>
-              <!-- New drop-down menu -- fixes the error of dropping below the 'header', 
-                where the dropdown would not work (out of scope)-->
               <!-- Drop-down menu -->
               <ul class="dropdown2">
                 <li>
@@ -52,25 +50,9 @@
                   >
                 </li>
               </ul>
-              <!-- <ul>
-                <li>
-                  <a href="../index.html">Home Page</a>
-                </li>
-                <li>
-                  <a href="./aboutme.html">About Me</a>
-                </li>
-                <li>
-                  <a href="./dogslideshow.html">Poodle Slideshow</a>
-                </li>
-                <li>
-                  <a href="./october.html">October</a>
-                </li>
-                <li>
-                  <a href="./november.html">November</a>
-                </li>
-              </ul> -->
             </li>
           </nav>
+          <!-- Calendar Function Buttons (Create and Delete) -->
           <li>
             <div class="create_btn"><button>Create Reminder</button></div>
           </li>
@@ -90,6 +72,8 @@
       </div>
     </nav>
 
+    <!-- Anchor tag that allows the user to access the previous month; this navigation used to be under
+    the "Pages" dropdown, but decided to only have it here to reduce redundancy -->
     <nav class="changeMonth">
       <a href="./november.html">
         <i class="fa-solid fa-arrow-left"></i>
@@ -97,6 +81,7 @@
       </a>
     </nav>
 
+    <!-- User input code for Creating a Reminder - hidden by default -->
     <div id="userInputRem" class="hide">
       <label for="reminderDate"
         >What month and day would you like to set a reminder?</label
@@ -134,6 +119,7 @@
       <!-- We'll want an empty-checker along with the action of putting the text on the calendar -->
       <div class="done_btn"><button>Done</button></div>
     </div>
+    <!-- HTML design for when the user clicks Delete One (most recent reminder) -->
     <div id="userInputDeleteOne" class="hide">
       <label for="deleteOneDate"
         >What day would you like to delete your most recent reminder?</label
@@ -149,6 +135,7 @@
       />
       <div class="submitOne_btn"><button>Submit</button></div>
     </div>
+    <!-- HTML design for when the user clicks Delete All reminders from a given day -->
     <div id="userInputDeleteAll" class="hide">
       <label for="deleteDate"
         >What month and day would you like to delete all reminders?</label
@@ -169,14 +156,7 @@
       </div>
     </div>
 
-    <!-- <script>
-      document
-        .getElementById("done_btn")
-        .addEventListener("click", function () {
-          document.getElementById("01day").innerHTML +=
-            "<span>Hello geeks<span>";
-        });
-    </script> tried to use geeksforgeeks code. that didn't even work-->
+    <!-- Actual calendar design -->
     <div class="calendar_container">
       <table id="calendar_table">
         <caption>
@@ -194,6 +174,7 @@
           </tr>
         </thead>
 
+        <!-- First week; first few days bleed from November, so they will be grayed out -->
         <tbody>
           <tr>
             <td>27</td>
@@ -204,7 +185,6 @@
               01<br />
               <span id="01day"></span>
             </td>
-
             <td class="snd">
               02<br />
               <span id="02day"></span>
@@ -215,6 +195,7 @@
             </td>
           </tr>
 
+          <!-- Second Week -->
           <tr>
             <td>
               04<br />
@@ -246,6 +227,7 @@
             </td>
           </tr>
 
+          <!-- Third Week -->
           <tr>
             <td>
               11<br />
@@ -273,6 +255,8 @@
             </td>
             <td>17 <span id="17day"></span></td>
           </tr>
+
+          <!-- Fourth Week of December -->
           <tr>
             <td>18<br /><span id="18day"></span></td>
             <td>19<br /><span id="19day"></span></td>
@@ -283,6 +267,7 @@
             <td>24<br /><span id="chrimmyEve"></span></td>
           </tr>
 
+          <!-- Last week of December -->
           <tr>
             <td class="chrimmy">25<br /><span id="christmas"></span></td>
             <td>26<br /><span id="26day"></span></td>
@@ -293,9 +278,7 @@
             <td class="defaultny" id="nye">31<br /><span id="nyEve"></span></td>
           </tr>
 
-          <!-- maybe get the code for this out. def for November; don't need a full week and a half of future dates that are
-unaccessible -->
-
+          <!-- First week of January; grayed out -->
           <tr>
             <td>01</td>
             <td>02</td>
