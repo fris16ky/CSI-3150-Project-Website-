@@ -112,6 +112,9 @@ going to about me and home page */
   position: relative;
   padding: 0;
 }
+  .delete > ul:hover {
+    display: block;
+}
 
 .dropdown {
   background-color: dodgerblue;
