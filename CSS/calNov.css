@@ -1,10 +1,8 @@
-/* style sheet for html file in ../html/november.html */
+/* style sheet for html file in ../html/december.html */
 
-/*so I'm pretty sure style_navbar is useless, since we copied that code here, right?*/
-
-/*Apply basic CSS to the webpage */
+/* Apply basic CSS to the webpage */
 * {
-  /*For everything in the page: remove all margin and paddings, add a box*/
+  /* For everything in the page: remove all margin and paddings, add a box */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,6 +10,8 @@
 
 body {
   font-family: cursive;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 a {
@@ -35,27 +35,32 @@ canvas where you can draw certain things */
 }
 
 .navlinks a {
-  /*Only Anchor tags from the navlinks class*/
+  /* Anchor tags from navlinks class*/
   color: white;
 }
 
 /*Styling the logo */
 .logo {
-  font-size: 32px; /*Only works for this bc we're using text as our logo */
+  font-size: 32px;
+  color: goldenrod;
+}
+
+.logo img {
+  height: 40px;
 }
 
 /*Navbar menu */
 .menu {
   display: flex;
-  gap: 1em; /*Gap of one em. no clue what em is rofl*/
-  font-size: 11px;
+  gap: 1em;
+  font-size: 12px;
 }
 
 .menu li {
   padding: 5px 14px; /*Top and bottom, left and right*/
 }
 
-/*Working on transitions. Give an animation when you hover over one of the links*/
+/*Working on transitions. Gives an animation when you hover over one of the links*/
 .menu li:hover {
   background-color: silver;
   border-radius: 5px;
@@ -66,22 +71,62 @@ canvas where you can draw certain things */
   padding: 5px 10px; /*After this transition goes on, change the padding back to normal*/
 }
 
-/*Dropdown menu time*/
-.create {
+/*Dropdown menu for Page Navigation*/
+.navPages {
+  position: relative;
+  padding: 0;
+  text-decoration: none;
+}
+
+.navPages:hover .dropdown {
+  display: block;
+  color: black;
+  background-color: yellow;
+}
+
+.dropdown2 {
+  background-color: dodgerblue;
+  padding: 0.5em 0;
+  right: 0px;
+  position: absolute;
+  display: none;
+  border-radius: 8px;
+  top: 15px;
+}
+
+.dropdown2 li + li {
+  /* li + li siblings */
+  margin-top: 0px;
+}
+
+.dropdown2 li {
+  padding: 0.5em 1em;
+  width: 7.5em;
+  text-align: center;
+}
+.dropdown2 li + li:hover {
+  background-color: silver;
+}
+
+.navPages:hover .dropdown2 {
+  display: block;
+}
+
+/*Dropdown menu for Delete Reminder*/
+.delete {
   position: relative;
   padding: 0;
 }
 
 .dropdown {
-  background-color: fuchsia;
+  background-color: dodgerblue;
   padding: 0.5em 0;
   position: absolute;
   display: none;
   border-radius: 8px;
-  top: 14px;
+  top: 15px;
 }
 
-/*Now we need to code the hover. Took vid on why he did li + li - means we're choosing siblings (both children of services)*/
 .dropdown li + li {
   margin-top: 0px;
 }
@@ -93,15 +138,46 @@ canvas where you can draw certain things */
 }
 
 .dropdown li:hover {
-  background-color: aquamarine;
-  /* is there a way to haev this change the buttons color too? */
+  background-color: yellow;
 }
 
-.create:hover .dropdown {
+.delete:hover .dropdown {
   display: block;
 }
 
-/*Responsive nav bar*/
+/* Color of the Create and Delete buttons + changing color when hovering */
+.delone_btn button {
+  color: white;
+  background-color: dodgerblue;
+  border: none;
+}
+
+.delone_btn button:hover {
+  background-color: yellow;
+  color: black;
+}
+
+.delmult_btn button {
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+}
+
+.delmult_btn :hover {
+  background-color: yellow;
+  color: black;
+}
+
+.create_btn button {
+  background-color: dodgerblue;
+  border: transparent;
+  color: white;
+  font-size: 11px;
+}
+
+.create_btn :hover {
+  background-color: silver;
+}
 
 /*Style the checkbox and then the hamburger menu icon */
 input[type="checkbox"] {
@@ -155,10 +231,10 @@ CSS Media queries. 760 roughly the size for desktops*/
   }
 }
 
-/* This is where the Calendar CSS starts */
+/* CSS for the Calendar */
 
 body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 h1 {
@@ -173,42 +249,45 @@ h1 {
 
 /* div container for calender  */
 .calendar_container {
-  /* position property */
   position: relative;
-  /* position offset top and left */
   top: 75%;
-  left: 25%;
+  left: 20%;
+
   /* box model properties */
   border: 20px;
   margin: auto;
   padding: 5px;
 }
 
-/* basic style rules for the table */
+/* Styling the table */
 #calendar_table {
-  /* text color and background color */
   color: rgb(12, 9, 2);
   background-color: black;
+
   /* separation between coloumns */
   border-spacing: 2px;
+
   /* making table borders */
   border: 2px solid black;
+
   /* table width */
-  width: 50%;
+  width: 55%;
+  height: 80%;
 }
 
+/* Making the Day holders (top of every column) pink in background with white text */
 #calendar_table thead {
   color: white;
   background-color: magenta;
 }
 
-/* apply alternate colors to tr elements within tbody using pseudo elements this excludes table header */
+/* Every element thats the nth child (aka whole table) is white */
 tbody tr:nth-child(n) {
   background-color: white;
 }
 
-tbody tr:nth-child(6) {
-  /*This is for rows. */
+/* Making previous and future month dates grayed out */
+.lastofMonth {
   background-color: lightgray;
 }
 
@@ -216,111 +295,102 @@ tbody tr:nth-child(6) {
   background-color: lightgray;
 }
 
-.lastofMonth {
-  background-color: lightgray;
-}
-
 .fdec {
   background-color: lightgray;
 }
+
 .twdec {
   background-color: lightgray;
 }
+
 .thdec {
   background-color: lightgray;
 }
 
-/* add some spacing to the cells  */
+/* Spacing between cells */
 #calender_table th,
 #calender_table td {
   margin: 2px;
   padding-bottom: 2px;
 }
 
-/* curve the corners of the calender row last child -- optional */
-/* tr:last-child{
-    border-radius: 0px 0px 30px 30px;
-} */
-/* select last row's first cell and curve the left side of the border -- optional */
-/* tr:last-child>td:first-child{
-    border-radius: 0 0 0 30px;
-} */
-/* select last row's last cell and curve the bottom side of the border -- optional */
-/* tr:last-child>td:last-child{
-    border-radius: 0 0 30px 0;
-} */
-
-/* give some style to the caption */
+/* Styling the Month text */
 #calendar_table caption {
   background-color: white;
-  color: silver;
+  color: navy;
   font-weight: bolder;
-  font-size: 125%;
+  font-size: 150%;
   border-radius: 25px 25px 0 0;
-  text-transform: uppercase;
   border: 2px solid black;
 }
-/* format table cells space alignment etc */
+
 #calendar_table td {
   width: 100px;
-  height: 100px;
+  height: 110px;
   vertical-align: top;
 }
-/* outline any holidays or special event on the calendar. create a class and assign to specific td */
-.holiday {
-  background-color: cyan;
-}
 
-/* hide calender events by default.  */
+/* Hiding set reminders until you hover over the date */
 #calendar_table span {
   display: block;
   text-align: left;
   color: rgb(146, 66, 202);
   visibility: hidden;
 }
-/* use psuedo classes on the td elements and span element to show event when dates are clicked with a * mark */
-/* display events either on click or hover. YOu should also add for focus */
-#calendar_table td:active > span {
-  visibility: visible;
-}
+
+/* Showing reminder content when you hover over the date (content is within the span) */
 #calendar_table td:hover > span {
   visibility: visible;
 }
-/* try yourself - make the fonts on the dates that don't belong to october lighter - just as actual calenders do */
 
 /*Button code*/
-.today_btn,
-.future_btn,
-.delete_btn {
+.create,
+.delone_btn,
+.delmult_btn {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   /* this is a neat effect */
 }
 
-.today_btn button {
-  background-color: magenta;
-  border: none;
+/* CSS for hiding the User Input HTML for Create and Delete Reminders */
+.hide {
+  display: none;
 }
 
-.today_btn button:hover {
-  background-color: aquamarine;
+/* Show user input blocks for Create and Delete Reminders */
+.show {
+  display: block;
 }
 
-.future_btn button {
-  background-color: magenta;
-  border: none;
+/* CSS for the Previous Month anchor tag */
+.changeMonth {
+  text-align: right;
 }
 
-.future_btn :hover {
-  background-color: aquamarine;
+.prevMonth {
+  margin-right: 955px;
+  margin-top: 25px;
+  line-height: 2em;
 }
 
-.delete_btn button {
-  background-color: dodgerblue;
-  border: transparent;
-  color: white;
-  font-size: 11px;
+.nextMonth {
+  margin-right: 316px;
+  margin-top: 25px;
 }
 
-.delete_btn :hover {
-  background-color: silver;
+.vetspecial {
+  color: gold;
+  background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png);
+}
+
+.thanksgiving {
+  color: navy;
+  background-image: url("../Media/Images/turkey.jpg");
+}
+
+#vetday {
+  color: gold;
+}
+
+#turkeyday {
+  color: Gold;
 }

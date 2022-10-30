@@ -419,7 +419,9 @@ done_btn.addEventListener("click", (e) => {
       recentReminder25 = reminderContent + ". ";
       day25.textContent += reminderContent + ". ";
       day25.style.color = "red";
-      window.confirm("Your reminder has been created, Merry Christmas!");
+      window.confirm(
+        "Your reminder has been created, Merry Christmas if you celebrate!"
+      );
     }
   } else if (subDay == 26) {
     count26++;

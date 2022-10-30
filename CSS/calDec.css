@@ -318,7 +318,7 @@ tbody tr:nth-child(6) {
 /* Styling the Month text */
 #calendar_table caption {
   background-color: white;
-  color: silver;
+  color: navy;
   font-weight: bolder;
   font-size: 150%;
   border-radius: 25px 25px 0 0;

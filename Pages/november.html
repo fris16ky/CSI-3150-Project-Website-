@@ -6,62 +6,161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar for November, 2022</title>
 
+    <!-- Font Awesome credit -- used for the Previous and Next Month arrows-->
+    <script
+      src="https://kit.fontawesome.com/c976334f11.js"
+      crossorigin="anonymous"
+    ></script>
+
     <!--CSS Links-->
     <link rel="stylesheet" href="../CSS/calNov.css" />
 
     <!-- JS -->
-    <script src="../JS/nov.js" defer></script>
+    <script src="../js/nov.js" defer></script>
+
+    <!-- This is for the favicon (at the top of webpage) -->
+    <link rel="icon" href="../Media/Images/miaLogo.png" type="image" />
   </head>
   <body>
     <nav class="navbar">
       <!--logo-->
-      <div class="logo">Demo For Creating Calendars</div>
-      <!-- Later, this will be a picture of Mia? 
-      ALSO!!! Don't forget to to add icons to the top of the webpage (i.e. vlr at the top of chrome)
-      We did this early on - should be in index.html-->
+      <div class="logo">
+        <img src="../Media/Images/miaLogo.png" /> Poodle Scheduler
+      </div>
 
-      <!--navigation menu-->
       <div class="navlinks">
-        <!--(ONLY FOR MOBILE) mobile checkbox hack-->
-        <!-- <<input type="checkbox" id="checkbox_toggle" />
-        <label for="checkbox_toggle" class="hamburger">&#9776;</label> -->
+        <!-- (ONLY FOR MOBILE) mobile checkbox hack-->
+        <input type="checkbox" id="checkbox_toggle" />
+        <label for="checkbox_toggle" class="hamburger">&#9776;</label>
 
-        <!-- this I WILL need, but for now it's being a fucking pain in the ass. the arrow is annoying as FUCK
-and it gets in the way of having my Create Reminder dropdown work (can't figure out how to extend)
-the space for hover; and can't move it higher bc arrow is in the way. BS man -->
-
-        <!--Navigation Links-->
+        <!--navigation menu-->
         <div class="menu">
-          <li class="create">
-            <a href="#">Create Reminder</a>
-            <!-- Drop-down menu here -->
+          <nav>
+            <li class="navPages">
+              <a href="#">Pages</a>
+              <!-- Drop-down menu -->
+              <ul class="dropdown2">
+                <li>
+                  <a href="../index.html" class="home">Home Page</a>
+                </li>
+                <li>
+                  <a href="./dogslideshow.html" class="pood"
+                    >Poodle Slideshow</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </nav>
+          <!-- Calendar Function Buttons (Create and Delete) -->
+          <li>
+            <div class="create_btn"><button>Create Reminder</button></div>
+          </li>
+          <li class="delete">
+            <a href="#">Delete Reminder</a>
+            <!-- Drop-down menu -->
             <ul class="dropdown">
-              <!-- <li><a href="#">Today</a></li> -->
               <li>
-                <div class="today_btn"><button>Today</button></div>
+                <div class="delone_btn"><button>One</button></div>
               </li>
               <li>
-                <div class="future_btn"><button>Future</button></div>
+                <div class="delmult_btn"><button>Multiple</button></div>
               </li>
             </ul>
-          </li>
-          <li>
-            <div class="delete_btn"><button>Delete Reminder</button></div>
           </li>
         </div>
       </div>
     </nav>
-    <!-- <header>
-      <h1>A demo for creating Calenders</h1>
-    </header> -->
-    <nav>
-      <menu>
-        <ul>
-          <li><a href="../index.html">Index</a></li>
-        </ul>
-      </menu>
-    </nav>
 
+    <!-- Anchor tag that allows the user to access the previous month; this navigation used to be under
+    the "Pages" dropdown, but decided to only have it here to reduce redundancy -->
+    <nav class="changeMonth">
+      <a href="./october.html" class="prevMonth">
+        <i class="fa-solid fa-arrow-left"></i>
+        Previous Month
+      </a>
+      <a href="./december.html" class="nextMonth">
+        Next Month
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </nav>
+    <br />
+
+    <!-- User input code for Creating a Reminder - hidden by default -->
+    <div id="userInputRem" class="hide">
+      <label for="reminderDate"
+        >What month and day would you like to set a reminder?</label
+      >
+      <br />
+      <input
+        type="date"
+        id="inputDate"
+        value="2022-11-01"
+        min="2022-11-01"
+        max="2022-11-30"
+        required
+      />
+      <!-- We want the default value here to be 2022-11-01 since this webpage is for the December Calendar 
+      We're also no longer allowing the user to set reminders for other months while accessing a different month
+      than they want to set a reminder to-->
+
+      <br />
+      <label for="reminderContent"
+        >What would you like your reminder to say?</label
+      >
+      <br />
+      <input
+        type="text"
+        id="inputRem"
+        minlength="1"
+        maxlength="50"
+        size="38"
+        placeholder="Type here - max of 50 characters."
+        required
+      />
+      <!-- size = how long the input box is. We don't want them to type a lot of characters in the small calendar box -->
+
+      <!-- Done button for when the user submits their reminder -->
+      <!-- We'll want an empty-checker along with the action of putting the text on the calendar -->
+      <div class="done_btn"><button>Done</button></div>
+    </div>
+    <!-- HTML design for when the user clicks Delete One (most recent reminder) -->
+    <div id="userInputDeleteOne" class="hide">
+      <label for="deleteOneDate"
+        >What day would you like to delete your most recent reminder?</label
+      >
+      <br />
+      <input
+        type="date"
+        id="deleteOneDate"
+        value="2022-11-01"
+        min="2022-11-01"
+        max="2022-11-30"
+        required
+      />
+      <div class="submitOne_btn"><button>Submit</button></div>
+    </div>
+    <!-- HTML design for when the user clicks Delete All reminders from a given day -->
+    <div id="userInputDeleteAll" class="hide">
+      <label for="deleteDate"
+        >What month and day would you like to delete all reminders?</label
+      >
+      <br />
+      <input
+        type="date"
+        id="deleteDate"
+        value="2022-11-01"
+        min="2022-11-01"
+        max="2022-11-30"
+        required
+      />
+      <!-- Only letting them manage reminders in the current month, they can use the navigation tags to 
+      maneuver to the other available months -->
+      <div class="submit_btn">
+        <button>Submit</button>
+      </div>
+    </div>
+
+    <!-- Calendar design -->
     <div class="calendar_container">
       <table id="calendar_table">
         <caption>
@@ -83,55 +182,52 @@ the space for hover; and can't move it higher bc arrow is in the way. BS man -->
           <tr>
             <td class="sndtolast">30</td>
             <td class="lastofMonth">31</td>
-            <td>01</td>
-            <td>02</td>
-            <td>03</td>
-            <td>04</td>
-            <td>05</td>
+            <td>01<br /><span id="01day"></span></td>
+            <td>02<br /><span id="02day"></span></td>
+            <td>03<br /><span id="03day"></span></td>
+            <td>04<br /><span id="04day"></span></td>
+            <td>05<br /><span id="05day"></span></td>
           </tr>
 
           <tr>
-            <td>06</td>
-            <td>07</td>
-            <td>08</td>
-            <td>09</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
+            <td>06<br /><span id="06day"></span></td>
+            <td>07<br /><span id="07day"></span></td>
+            <td>08<br /><span id="08day"></span></td>
+            <td>09<br /><span id="09day"></span></td>
+            <td>10<br /><span id="10day"></span></td>
+            <td class="vetspecial">11<br /><span id="vetday"></span></td>
+            <td>12<br /><span id="12day"></span></td>
           </tr>
 
           <tr>
-            <td>13</td>
-            <td class="holiday">
-              14 <br />
-              <span>Holiday template</span>
-            </td>
-            <td>15</td>
-            <td>16</td>
-            <td>17</td>
-            <td>18</td>
-            <td>19</td>
+            <td>13<br /><span id="13day"></span></td>
+            <td>14<br /><span id="14day"></span></td>
+            <td>15<br /><span id="15day"></span></td>
+            <td>16<br /><span id="16day"></span></td>
+            <td>17<br /><span id="17day"></span></td>
+            <td>18<br /><span id="18day"></span></td>
+            <td>19<br /><span id="19day"></span></td>
           </tr>
           <tr>
-            <td>20</td>
-            <td>21</td>
-            <td>22</td>
-            <td>23</td>
-            <td>24</td>
-            <td>25</td>
-            <td>26</td>
+            <td>20<br /><span id="20day"></span></td>
+            <td>21<br /><span id="21day"></span></td>
+            <td>22<br /><span id="22day"></span></td>
+            <td>23<br /><span id="23day"></span></td>
+            <td class="thanksgiving">24<br /><span id="turkeyday"></span></td>
+            <td>25<br /><span id="25day"></span></td>
+            <td>26<br /><span id="26day"></span></td>
           </tr>
 
           <tr>
-            <td>27</td>
-            <td>28</td>
-            <td>29</td>
-            <td>30</td>
+            <td>27<br /><span id="27day"></span></td>
+            <td>28<br /><span id="28day"></span></td>
+            <td>29<br /><span id="29day"></span></td>
+            <td>30<br /><span id="30day"></span></td>
             <td class="fdec">01</td>
             <td class="twdec">02</td>
             <td class="thdec">03</td>
           </tr>
-
+          <!-- 
           <tr>
             <td>04</td>
             <td>05</td>
@@ -140,7 +236,7 @@ the space for hover; and can't move it higher bc arrow is in the way. BS man -->
             <td>08</td>
             <td>09</td>
             <td>10</td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
