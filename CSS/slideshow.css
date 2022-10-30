@@ -55,8 +55,8 @@ CSS Media queries. 760 roughly the size for desktops*/
   position: absolute;
   float: left;
   max-width: 100%;
-  margin-left: 300px;
-  margin-top: -10px;
+  margin-left: 200px;
+  margin-top: 0px;
 }
 
 /* Hide the images by default */
