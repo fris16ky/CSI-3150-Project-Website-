@@ -477,7 +477,7 @@ done_btn.addEventListener("click", (e) => {
       day31.textContent += reminderContent + ". ";
       document.getElementById("nye").className = "goldboi";
       day31.style.color = "gold";
-      window.confirm("Your reminder has been created, happy New Years Eve!");
+      window.confirm("Your reminder has been created, Happy New Years Eve!");
     }
   } else {
     window.confirm("There has been an error. Please retry");
