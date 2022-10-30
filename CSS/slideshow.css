@@ -4,21 +4,23 @@
 
 /* Positioning the image container (left and right arrows) */
 .container {
-  /* max-height: 100px; */
   max-width: 1000px;
   position: relative;
   margin: auto;
+}
+
+.homebtn {
+  position: absolute;
+  float: left;
+  max-width: 100%;
+  margin-left: 300px;
+  margin-top: -10px;
 }
 
 /* Hide the images by default */
 .slides {
   display: none;
 }
-
-/* Add the pointer cursor when hovering over the thumbnail images at the bottom */
-/* .cursor {
-  cursor: pointer;
-} */
 
 /* Next and previous buttons */
 .previous,
@@ -99,33 +101,3 @@
     opacity: 1;
   }
 }
-
-/* Container for image text */
-/* .caption_container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-} */
-
-/* .row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Columns side by side */
-/* .column {
-  float: left;
-  width: 20%;
-} */
-
-/* Transparency effect for thumbnail images 
-.demo cursor {
-  opacity: 0.6;
-}
-
-.active,
-.demo cursor:hover {
-  opacity: 1;
-} */

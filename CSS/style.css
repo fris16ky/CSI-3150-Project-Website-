@@ -8,6 +8,12 @@ html {
   box-sizing: border-box;
 }
 
+h1 {
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
+}
+
 *,
 *:before,
 *:after {
@@ -78,4 +84,16 @@ html {
 
 .github:hover {
   background-color: #555;
+}
+
+.calendarintro {
+  padding: 1em 2em;
+  font-size: 20px;
+  margin: 40;
+}
+
+.navi a {
+  float: left;
+  padding: 0em 4em 1em 3em;
+  font-size: 18px;
 }
