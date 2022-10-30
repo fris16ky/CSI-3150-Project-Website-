@@ -22,16 +22,26 @@
     <script src="../js/slideshow.js" defer></script>
   </head>
   <body>
-    <!-- Navigation to other pages -->
-    <nav class="homebtn">
-      <menu>
-        <ul>
-          <a href="../index.html" title="Home"
-            ><i class="fa-solid fa-house"></i
-          ></a>
-        </ul>
-      </menu>
-    </nav>
+    <div class="navlinks">
+      <!-- (ONLY FOR MOBILE) mobile checkbox hack-->
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <!--Navigation Links-->
+      <div class="menu">
+        <nav class="homebtn">
+          <menu>
+            <ul>
+              <a href="../index.html" title="Home"
+                ><i class="fa-solid fa-house"></i
+              ></a>
+            </ul>
+          </menu>
+        </nav>
+      </div>
+    </div>
+    <!-- Navigation to home page -->
+
     <!-- container for the image gallery -->
     <div class="container">
       <div class="slides">

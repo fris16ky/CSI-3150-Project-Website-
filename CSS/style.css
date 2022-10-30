@@ -97,3 +97,45 @@ h1 {
   padding: 0em 4em 1em 3em;
   font-size: 18px;
 }
+
+input[type="checkbox"] {
+  display: none;
+}
+
+/*Hamburger menu icon*/
+.hamburger {
+  display: none; /*default none since we don't want these to show on computer sites. Only for mobile*/
+  font-size: 24px;
+  user-select: none;
+}
+
+/*Figure out what device is accessing our webpage
+CSS Media queries. 760 roughly the size for desktops*/
+@media (max-width: 760px) {
+  .menu {
+    display: none;
+    position: absolute;
+    background-color: thistle;
+    right: 0;
+    left: 0; /*remove right and left margins*/
+    text-align: center;
+    padding: 16px 0;
+  }
+  .menu li:hover {
+    display: inline-block;
+    background-color: darksalmon;
+    transition: 0.3s ease; /*Doing same transitions for mobile devices*/
+  }
+
+  .menu li + li {
+    /*li items adjacent to each other*/
+    margin-top: 15px;
+  }
+  input[type="checkbox"]:checked ~ .menu {
+    display: block;
+  } /*if the input type of type checkbox is checked, we are displaying the menu now, as a block*/
+
+  .hamburger {
+    display: block;
+  }
+}
