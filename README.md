@@ -5,4 +5,5 @@ For this portion, we were required to use the bases of HTML, CSS, and JavaScript
 
 Having had 2 Google Phones in the past, and many gmail accounts, I decided on this topic stemming from my love of the Google Calendar system. 
 I added my own spice with weaving my love for photography and dogs into it, creating a slideshow to ease the mmonotony that comes with calendars. 
+
 Enjoy!
